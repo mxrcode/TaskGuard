@@ -13,7 +13,7 @@ TaskGuard is a to-do list application that helps you manage your tasks in a simp
 - **Cross-platform**: TaskGuard is currently written and compiled for Windows using C++ and Qt 6.4.3, but it can be compiled for other systems as well.
 
 ## License
-TaskGuard is released under the GNU Lesser General Public License (LGPL-3.0), which means it is free and open-source software that you can use, modify, and distribute. Please refer to the LICENSE file for more details.
+TaskGuard is released under the GNU Lesser General Public License (LGPL-3.0), which means it is free and open-source software that you can use, modify, and distribute. Please refer to the [LICENSE](https://github.com/mxrcode/TaskGuard/blob/main/LICENSE) file for more details.
 
 ## Contributing
 If you would like to contribute to TaskGuard, you are welcome to submit pull requests or report issues on the GitHub repository. Contributions are greatly appreciated and help improve the application.
