@@ -1,0 +1,15 @@
+<RCC>
+    <qresource prefix="/">
+        <file>img/logo.ico</file>
+        <file>img/logo-light.svg</file>
+        <file>img/logo-v2.svg</file>
+        <file>img/alarm.svg</file>
+        <file>img/plus-circle.svg</file>
+        <file>img/plus.svg</file>
+        <file>img/logo-dark.svg</file>
+        <file>img/search.svg</file>
+        <file>img/eye.svg</file>
+        <file>img/eye-white.svg</file>
+        <file>img/encrypt.svg</file>
+    </qresource>
+</RCC>
