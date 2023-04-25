@@ -3,7 +3,7 @@
 
 TaskGuard is a to-do list application that helps you manage your tasks in a simple and efficient way. What sets TaskGuard apart is its focus on security, with robust encryption mechanisms to protect your data.
 
-![image](https://user-images.githubusercontent.com/123785508/234048232-bbd6a8f8-be1e-4ddd-953c-027ce34003ae.png)
+![image](https://user-images.githubusercontent.com/123785508/234422735-0a73b366-f11b-410c-828f-7b2de99d8683.png)
 
 ## Features
 - **Task management**: Create, edit, and delete tasks with ease.
