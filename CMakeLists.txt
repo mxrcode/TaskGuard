@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.5)
 
-project(TaskGuard VERSION 1.1.0 LANGUAGES CXX)
+project(TaskGuard VERSION 1.1.1 LANGUAGES CXX)
 
 set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTOMOC ON)

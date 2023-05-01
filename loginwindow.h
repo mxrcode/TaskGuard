@@ -1,6 +1,8 @@
 #ifndef LOGINWINDOW_H
 #define LOGINWINDOW_H
 
+#include "version.h"
+
 #include <QMainWindow>
 #include <QApplication>
 #include <QWidget>
