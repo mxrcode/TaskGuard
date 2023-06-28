@@ -17,15 +17,15 @@ int main(int argc, char *argv[])
 
     QApplication app(argc, argv);
 
-    qInstallMessageHandler(message_handler); // Output debug info to qInfo.log
+    // qInstallMessageHandler(message_handler); // Output debug info to qInfo.log | Disable for Debug
 
     app.setWindowIcon(QIcon(":/img/logo-dark.svg"));
 
     QTranslator translator;
-    const QStringList uiLanguages = QLocale::system().uiLanguages();
-    for (const QString &locale : uiLanguages) {
-        const QString baseName = SOFT_NAME + "_" + QLocale(locale).name();
-        if (translator.load(":/i18n/" + baseName)) {
+    const QStringList ui_languages = QLocale::system().uiLanguages();
+    for (const QString &locale : ui_languages) {
+        const QString base_name = SOFT_NAME + "_" + QLocale(locale).name();
+        if (translator.load("translations/" + base_name)) {
             app.installTranslator(&translator);
             break;
         }

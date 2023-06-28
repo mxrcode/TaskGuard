@@ -9,6 +9,7 @@
 #include <QSysInfo>
 #include <QToolButton>
 #include <QThread>
+#include <QTranslator>
 
 #include "string_encryption.h"
 

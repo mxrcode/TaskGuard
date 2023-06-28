@@ -6,7 +6,6 @@
 #include <QMainWindow>
 #include <QApplication>
 #include <QLocale>
-#include <QTranslator>
 #include <QString>
 #include <QVector>
 #include <QMap>
@@ -29,6 +28,7 @@
 #include <QTimer>
 #include <QShortcut>
 #include <QComboBox>
+#include <QTranslator>
 
 #include <QSqlDatabase>
 #include <QSqlDriver>

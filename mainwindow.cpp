@@ -63,7 +63,7 @@ bool MainWindow::setup_MainWindow(bool password_state, QString password, bool hw
 
             QDialog confirmation_dialog(this);
             confirmation_dialog.setFixedWidth(300);
-            confirmation_dialog.setWindowTitle("Enter a new group name");
+            confirmation_dialog.setWindowTitle(tr("Enter a new group name"));
 
             QLineEdit *line_edit = new QLineEdit(&confirmation_dialog);
             line_edit->setText(item->text());
@@ -112,7 +112,7 @@ bool MainWindow::setup_MainWindow(bool password_state, QString password, bool hw
 
             QDialog confirmation_dialog(this);
             confirmation_dialog.setFixedWidth(300);
-            confirmation_dialog.setWindowTitle("Specify new position");
+            confirmation_dialog.setWindowTitle(tr("Specify new position"));
 
             QLineEdit *line_edit = new QLineEdit(&confirmation_dialog);
             line_edit->setText(QString::number( db_group_position(item->data(Qt::UserRole).toUInt()) ));
@@ -141,11 +141,11 @@ bool MainWindow::setup_MainWindow(bool password_state, QString password, bool hw
                             position = str_pos.toInt();
                             db_set_group_position(item->data(Qt::UserRole).toUInt(), position);
                         } else {
-                            QMessageBox::warning(nullptr, "Failure", "Conversion failed: " + str_pos + " is not a valid integer.\nAlso, don't use 0.", QMessageBox::Ok);
+                            QMessageBox::warning(nullptr, tr("Failure"), tr("Conversion failed: ") + str_pos + tr(" is not a valid integer.\nAlso, don't use 0."), QMessageBox::Ok);
                         }
                     } catch (const std::exception& e) {
-                        QMessageBox::warning(nullptr, "Exception", e.what(), QMessageBox::Ok);
-                        qInfo() << "Exception occurred: " << e.what();
+                        QMessageBox::warning(nullptr, tr("Exception"), e.what(), QMessageBox::Ok);
+                        qInfo() << tr("Exception occurred: ") << e.what();
                     }
                 }
 
@@ -166,7 +166,7 @@ bool MainWindow::setup_MainWindow(bool password_state, QString password, bool hw
         if (selected.isEmpty()) {
             return;
         }
-        QMessageBox::StandardButton confirm_delete = QMessageBox::question(this, "Delete Group", "Are you sure you want to DELETE the selected group?");
+        QMessageBox::StandardButton confirm_delete = QMessageBox::question(this, tr("Delete Group"), tr("Are you sure you want to DELETE the selected group?"));
         if (confirm_delete == QMessageBox::No) {
             return;
         }
@@ -201,7 +201,7 @@ bool MainWindow::setup_MainWindow(bool password_state, QString password, bool hw
         if (selected.isEmpty()) {
             return;
         }
-        QMessageBox::StandardButton confirm_copy = QMessageBox::question(this, "Copy task", "Are you sure you want to COPY this task? ");
+        QMessageBox::StandardButton confirm_copy = QMessageBox::question(this, tr("Copy task"), tr("Are you sure you want to COPY this task?"));
         if (confirm_copy == QMessageBox::No) {
             return;
         }
@@ -249,7 +249,7 @@ bool MainWindow::setup_MainWindow(bool password_state, QString password, bool hw
                     groups.insert(db_query.value("name").toString(), db_query.value("id").toUInt());
                 }
             } else {
-                qInfo() << "Error when trying to get a list of active groups from the database!";
+                qInfo() << tr("Error when trying to get a list of active groups from the database!");
             }
 
             QDialog* dialog = create_selection_dialog(tr("Choose a new group"), groups);
@@ -278,7 +278,7 @@ bool MainWindow::setup_MainWindow(bool password_state, QString password, bool hw
         if (selected.isEmpty()) {
             return;
         }
-        QMessageBox::StandardButton confirm_delete = QMessageBox::question(this, "Delete Task", "Are you sure you want to DELETE the selected task?");
+        QMessageBox::StandardButton confirm_delete = QMessageBox::question(this, tr("Delete Task"), tr("Are you sure you want to DELETE the selected task?"));
         if (confirm_delete == QMessageBox::No) {
             return;
         }
@@ -331,7 +331,7 @@ bool MainWindow::setup_MainWindow(bool password_state, QString password, bool hw
 
             if (!db_query.exec())
             {
-                qInfo() << "An error occurred when selecting by CRON actual tasks from the database!";
+                qInfo() << tr("An error occurred when selecting by CRON actual tasks from the database!");
                 return;
             }
 
@@ -385,8 +385,8 @@ bool MainWindow::setup_MainWindow(bool password_state, QString password, bool hw
 
     ui->task_search_edit->hide();
 
-    ui->task_title->setPlaceholderText("Title...");
-    ui->task_edit->setPlaceholderText("Description...");
+    ui->task_title->setPlaceholderText(tr("Title..."));
+    ui->task_edit->setPlaceholderText(tr("Description..."));
 
     show();
     isActiveWindow();
@@ -657,7 +657,7 @@ bool MainWindow::db_connect() {
     }
 
     if (!db.open()) {
-        qInfo() << "Error when opening the database: " << db.lastError().driverText();
+        qInfo() << tr("Error when opening the database: ") << db.lastError().driverText();
         return false;
     }
 
@@ -713,7 +713,7 @@ bool MainWindow::db_add_group(QString name, int allowed_delete, int position) {
     db_query.bindValue(":group_position", position);
 
     if (!db_query.exec()) {
-        qInfo() << "Failed to add the row \"" + name + "\" groups to the database!";
+        qInfo() << tr("Failed to add the row \"") + name + tr("\" groups to the database!");
         return false;
     }
 
@@ -728,7 +728,7 @@ bool MainWindow::db_rename_group(unsigned int group_id, QString name) {
     db_query.bindValue(":name", name);
 
     if (!db_query.exec()) {
-        qInfo() << "Failed to change the string to \"" + name + "\" for groups in the database!";
+        qInfo() << tr("Failed to change the string to \"") + name + tr("\" for groups in the database!");
         return false;
     }
 
@@ -743,7 +743,7 @@ bool MainWindow::db_set_group_position(unsigned int group_id, int position) {
     db_query.bindValue(":set_position", position);
 
     if (!db_query.exec()) {
-        qInfo() << "Failed to change the position to \"" + QString::number(position) + "\" for groups in the database!";
+        qInfo() << tr("Failed to change the position to \"") + QString::number(position) + tr("\" for groups in the database!");
         return false;
     }
 
@@ -759,7 +759,7 @@ int MainWindow::db_group_position(unsigned int group_id) {
     db_query.bindValue(":group_id", group_id);
 
     if (!db_query.exec()) {
-        qInfo() << "Failed to get the group position by id \"" + QString::number(group_id) + "\" from the database!";
+        qInfo() << tr("Failed to get the group position by id \"") + QString::number(group_id) + tr("\" from the database!");
         return position;
     } else {
         while (db_query.next()) {
@@ -779,7 +779,7 @@ bool MainWindow::task_move(unsigned int task_id, unsigned int to_group_id) {
     db_query.bindValue(":new_id", to_group_id);
 
     if (!db_query.exec()) {
-        qInfo() << "Error when moving task with id \"" + QString::number(task_id) + "\" in database.";
+        qInfo() << tr("Error when moving task with id \"") + QString::number(task_id) + tr("\" in database.");
         return false;
     }
 
@@ -796,7 +796,7 @@ bool MainWindow::task_move(unsigned int task_id, unsigned int from_group_id, uns
     db_query.bindValue(":new_id", to_group_id);
 
     if (!db_query.exec()) {
-        qInfo() << "Error when moving task with id \"" + QString::number(task_id) + "\" in database.";
+        qInfo() << tr("Error when moving task with id \"") + QString::number(task_id) + tr("\" in database.");
         return false;
     }
 
@@ -835,7 +835,7 @@ bool MainWindow::db_rm_group(unsigned int group_id) {
     db_query.bindValue(":set_status", "deleted");
 
     if (!db_query.exec()) {
-        qInfo() << "Error when deleting an item with id \"" + QString::number(group_id) + "\" from the database.";
+        qInfo() << tr("Error when deleting an item with id \"") + QString::number(group_id) + tr("\" from the database.");
         return false;
     }
 
@@ -866,7 +866,7 @@ bool MainWindow::db_add_task(int group_id,
     db_query.bindValue(":create_time", timestamp);
 
     if (!db_query.exec()) {
-        qInfo() << "failed to add the task \"" + title + "\" to the database.!";
+        qInfo() << tr("Failed to add the task \"") + title + tr("\" to the database.!");
         return false;
     }
 
@@ -885,7 +885,7 @@ bool MainWindow::db_rm_task(unsigned int task_id) {
     db_query.bindValue(":set_status", "deleted");
 
     if (!db_query.exec()) {
-        qInfo() << "Error when deleting an item with id \"" + QString::number(task_id) + "\" from the database.";
+        qInfo() << tr("Error when deleting an item with id \"") + QString::number(task_id) + tr("\" from the database.");
         return false;
     }
 
@@ -1113,7 +1113,7 @@ void MainWindow::auto_save() {
 
         if (!db_query.exec())
         {
-            qInfo() << "An error occurred when executing the query related to autosave task title!";
+            qInfo() << tr("An error occurred when executing the query related to autosave task title!");
         } else {
             window_update();
 
@@ -1147,7 +1147,7 @@ void MainWindow::auto_save() {
 
         if (!db_query.exec())
         {
-            qInfo() << "An error occurred when executing the query related to autosave task text!";
+            qInfo() << tr("An error occurred when executing the query related to autosave task text!");
         } else {
             QDateTime t_update_time;
             t_update_time.setSecsSinceEpoch(timestamp);
@@ -1186,7 +1186,7 @@ QVector<QMap<QString, QVariant>> MainWindow::get_task_data_by_id(unsigned int ta
             item_map.push_back(t_map);
         }
     } else {
-        qInfo() << "Error when querying rows by id \"" + QString::number(task_id) + "\" from the database";
+        qInfo() << tr("Error when querying rows by id \"") + QString::number(task_id) + tr("\" from the database");
     }
 
     return item_map;
@@ -1211,7 +1211,7 @@ void MainWindow::on_add_alarm_clicked()
     QTime current_alarm_time_qtime = current_alarm_time_datetime.time();
 
     QDialog dialog(this);
-    dialog.setWindowTitle("Select date and time for alarm");
+    dialog.setWindowTitle(tr("Select date and time for alarm"));
     dialog.setWindowFlag(Qt::WindowStaysOnTopHint);
     dialog.setStyleSheet("QDialog {background-color:#FFF;}");
 
@@ -1251,7 +1251,7 @@ void MainWindow::on_add_alarm_clicked()
 
         if (!db_query.exec())
         {
-            qInfo() << "Error when writing a new alarm time to the database!";
+            qInfo() << tr("Error when writing a new alarm time to the database!");
         } else {
             window_update();
 
@@ -1294,10 +1294,10 @@ void MainWindow::on_group_add_clicked()
 {
     QDialog confirmation_dialog(this);
     confirmation_dialog.setFixedWidth(300);
-    confirmation_dialog.setWindowTitle("Enter a new group name");
+    confirmation_dialog.setWindowTitle(tr("Enter a new group name"));
 
     QLineEdit *line_edit = new QLineEdit(&confirmation_dialog);
-    line_edit->setText("Notes");
+    line_edit->setText(tr("Notes"));
     QVBoxLayout *layout = new QVBoxLayout;
     layout->addWidget(line_edit);
     confirmation_dialog.setLayout(layout);
@@ -1497,7 +1497,7 @@ void MainWindow::keyPressEvent(QKeyEvent *event) {
         QListWidgetItem *item = ui->task_list->currentItem();
         if (item && item->isSelected()) {
 
-            QMessageBox::StandardButton confirmDelete = QMessageBox::question(this, "Delete Task", "Are you sure you want to DELETE the selected task?");
+            QMessageBox::StandardButton confirmDelete = QMessageBox::question(this, tr("Delete Task"), tr("Are you sure you want to DELETE the selected task?"));
             if (confirmDelete == QMessageBox::No) {
                 return;
             }

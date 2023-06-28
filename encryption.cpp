@@ -106,7 +106,7 @@ void encryption::on_encrypt_button_clicked()
 {
 
     ui->notification_encrypt->setStyleSheet(notification_style.value("default"));
-    ui->notification_encrypt->setText("Enter a password to encrypt the database");
+    ui->notification_encrypt->setText(tr("Enter a password to encrypt the database"));
 
     QString new_password = ui->new_password_encrypt->text().trimmed();
     QString repeat_password = ui->repeat_password_encrypt->text().trimmed();
@@ -114,14 +114,14 @@ void encryption::on_encrypt_button_clicked()
     if (new_password == "" && repeat_password == "") { // without password
 
         ui->notification_encrypt->setStyleSheet(notification_style.value("error"));
-        ui->notification_encrypt->setText("You must enter a password to encrypt!");
+        ui->notification_encrypt->setText(tr("You must enter a password to encrypt!"));
 
         return;
 
     } else if (new_password != repeat_password) { // passwords don't match
 
         ui->notification_encrypt->setStyleSheet(notification_style.value("error"));
-        ui->notification_encrypt->setText("Attention, Passwords don't match!");
+        ui->notification_encrypt->setText(tr("Attention, Passwords don't match!"));
 
         return;
     }
@@ -130,7 +130,7 @@ void encryption::on_encrypt_button_clicked()
 
     if (ui->use_hwid_encrypt->isChecked()) { // alert about "Encrypt for this device only" function
 
-        QMessageBox::StandardButton empty_password = QMessageBox::question(this, "Attention", "The \"Encrypt for this device only\" function means that you cannot decrypt database file with your data using another computer.\nSince encryption is done using the HWID. Are you sure?");
+        QMessageBox::StandardButton empty_password = QMessageBox::question(this, tr("Attention"), tr("The \"Encrypt for this device only\" function means that you cannot decrypt database file with your data using another computer.\nSince encryption is done using the HWID. Are you sure?"));
         if (empty_password == QMessageBox::No) {
             ui->use_hwid_encrypt->setChecked(false);
             return;
@@ -157,7 +157,7 @@ void encryption::on_encrypt_button_clicked()
     bool status = db_encrypt(t_password);
 
     if (status == false) {
-        qInfo() << "Unknown bug when trying to encrypt database.";
+        qInfo() << tr("Unknown bug when trying to encrypt database.");
     }
 
     // Restart app
@@ -239,7 +239,7 @@ void encryption::on_repeat_change_password_eye_button_released()
 void encryption::on_decrypt_button_clicked()
 {
     ui->notification_decrypt->setStyleSheet(notification_style.value("default"));
-    ui->notification_decrypt->setText("Enter a password to decrypt the database");
+    ui->notification_decrypt->setText(tr("Enter a password to decrypt the database"));
 
     QString password = ui->current_password_decrypt->text().trimmed();
 
@@ -249,17 +249,17 @@ void encryption::on_decrypt_button_clicked()
 
     if (password == "") {
         ui->notification_decrypt->setStyleSheet(notification_style.value("error"));
-        ui->notification_decrypt->setText("The password field cannot be blank.");
+        ui->notification_decrypt->setText(tr("The password field cannot be blank."));
         return;
     }
 
     if (password != magic_decrypt(db_password, MAGIC)) {
         ui->notification_decrypt->setStyleSheet(notification_style.value("error"));
-        ui->notification_decrypt->setText("You entered the wrong password.");
+        ui->notification_decrypt->setText(tr("You entered the wrong password."));
         return;
     }
 
-    QMessageBox::StandardButton decrypt_alert = QMessageBox::question(this, "Attention", "The database will be decrypted, are you sure you want to do that?\nThe data will no longer be protected!");
+    QMessageBox::StandardButton decrypt_alert = QMessageBox::question(this, tr("Attention"), tr("The database will be decrypted, are you sure you want to do that?\nThe data will no longer be protected!"));
     if (decrypt_alert == QMessageBox::No) {
         ui->current_password_decrypt->setText("");
         return;
@@ -274,7 +274,7 @@ void encryption::on_decrypt_button_clicked()
     bool status = db_decrypt(password);
 
     if (status == false) {
-        qInfo() << "Unknown bug when trying to decrypt database.";
+        qInfo() << tr("Unknown bug when trying to decrypt database.");
     }
 
     save_settings("use_encryption", "0");
@@ -289,7 +289,7 @@ void encryption::on_decrypt_button_clicked()
 void encryption::on_submit_change_password_clicked()
 {
     ui->notification_change_password->setStyleSheet(notification_style.value("default"));
-    ui->notification_change_password->setText("Enter current and new passwords");
+    ui->notification_change_password->setText(tr("Enter current and new passwords"));
 
     QString current_password = ui->current_change_password->text().trimmed();
     QString new_password = ui->new_change_password->text().trimmed();
@@ -297,13 +297,13 @@ void encryption::on_submit_change_password_clicked()
 
     if (current_password == "" || new_password == "" || repeat_password == "") {
         ui->notification_change_password->setStyleSheet(notification_style.value("error"));
-        ui->notification_change_password->setText("The password fields cannot be empty.");
+        ui->notification_change_password->setText(tr("The password fields cannot be empty."));
         return;
     }
 
     if (new_password != repeat_password) { // passwords don't match
         ui->notification_change_password->setStyleSheet(notification_style.value("error"));
-        ui->notification_change_password->setText("Attention, Passwords don't match!");
+        ui->notification_change_password->setText(tr("Attention, Passwords don't match!"));
         return;
     }
 
@@ -314,11 +314,11 @@ void encryption::on_submit_change_password_clicked()
 
     if (current_password != magic_decrypt(db_password, MAGIC)) {
         ui->notification_change_password->setStyleSheet(notification_style.value("error"));
-        ui->notification_change_password->setText("You entered the wrong password.");
+        ui->notification_change_password->setText(tr("You entered the wrong password."));
         return;
     }
 
-    QMessageBox::StandardButton change_password_alert = QMessageBox::question(this, "Attention", "The database will be encrypted using a new password, are you sure you want to do that? You will lose access to this data if you forget a new password.");
+    QMessageBox::StandardButton change_password_alert = QMessageBox::question(this, tr("Attention"), tr("The database will be encrypted using a new password, are you sure you want to do that? You will lose access to this data if you forget a new password."));
     if (change_password_alert == QMessageBox::No) {
         ui->current_change_password->setText("");
         ui->new_change_password->setText("");
@@ -335,7 +335,7 @@ void encryption::on_submit_change_password_clicked()
     bool status = db_change_key(current_password, new_password);
 
     if (status == false) {
-        qInfo() << "Unknown error when trying to change the encryption key for the database.";
+        qInfo() << tr("Unknown error when trying to change the encryption key for the database.");
     }
 
     save_settings("use_encryption", "1");
@@ -369,11 +369,11 @@ bool encryption::db_encrypt(QString password) { // Encrypt an Existing Database
         db_password = password;
 
     } else {
-        qInfo() << "Database file not found.";
+        qInfo() << tr("Database file not found.");
     }
 
     if (!db_local.open()) {
-        qInfo() << "Error when trying to open a newly encrypted database!";
+        qInfo() << tr("Error when trying to open a newly encrypted database!");
         return false;
     }
 
@@ -391,7 +391,7 @@ bool encryption::db_decrypt(QString password) {
     db_password = "";
 
     if (!db_local.open()) {
-        qInfo() << "Error when attempting to decrypt the database!";
+        qInfo() << tr("Error when attempting to decrypt the database!");
         return false;
     }
 
@@ -410,11 +410,11 @@ bool encryption::db_change_key(QString old_password, QString new_password) {
         db_password = new_password;
 
     } else {
-        qInfo() << "Database file not found.";
+        qInfo() << tr("Database file not found.");
     }
 
     if (!db_local.open()) {
-        qInfo() << "Error when trying to open the database after a password change!";
+        qInfo() << tr("Error when trying to open the database after a password change!");
         return false;
     }
 

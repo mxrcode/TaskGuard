@@ -15,7 +15,12 @@ find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets LinguistTools Sql
 find_package(OpenSSL REQUIRED)
 include_directories(${OPENSSL_INCLUDE_DIR})
 
-set(TS_FILES TaskGuard_en_US.ts)
+set(TS_FILES
+    translations/TaskGuard_en_US.ts
+    translations/TaskGuard_uk_UA.ts
+    translations/TaskGuard_ru_RU.ts
+    translations/TaskGuard_es_ES.ts
+)
 
 set(PROJECT_SOURCES
         main.cpp

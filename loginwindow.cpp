@@ -27,7 +27,7 @@ LoginWindow::LoginWindow(QWidget *parent) :
     notification_style.insert("error", "QLabel {border: 2px solid #9B5959;background-color: #804747;padding: 10px;border-radius:4px;}");
 
     ui->notification_sign_up->setStyleSheet(notification_style.value("default"));
-    ui->notification_sign_up->setText("Enter and confirm a password to encrypt");
+    ui->notification_sign_up->setText(tr("Enter and confirm a password to encrypt"));
 
     if (mainWindow.db_exist()) {
         ui->stacked_widget->setCurrentWidget(ui->sign_in);
@@ -44,7 +44,7 @@ LoginWindow::LoginWindow(QWidget *parent) :
                 hide();
             } else {
                 ui->notification_sign_in->setStyleSheet(notification_style.value("error"));
-                ui->notification_sign_in->setText("Wrong password or other errors!");
+                ui->notification_sign_in->setText(tr("Wrong password or other errors!"));
             }
 
         } else if (use_encryption == "1" && key_data != "") { // IF USE ENCRYPTION
@@ -57,7 +57,7 @@ LoginWindow::LoginWindow(QWidget *parent) :
                 hide();
             } else {
                 ui->notification_sign_in->setStyleSheet(notification_style.value("error"));
-                ui->notification_sign_in->setText("Wrong password or other errors!");
+                ui->notification_sign_in->setText(tr("Wrong password or other errors!"));
             }
 
         } else if (use_encryption == "1" && key_data != "" && use_hwid == "1") { // IF USE ENCRYPTION & IF USE HWID
@@ -70,7 +70,7 @@ LoginWindow::LoginWindow(QWidget *parent) :
                 hide();
             } else {
                 ui->notification_sign_in->setStyleSheet(notification_style.value("error"));
-                ui->notification_sign_in->setText("Wrong password or other errors!");
+                ui->notification_sign_in->setText(tr("Wrong password or other errors!"));
             }
 
         }
@@ -136,21 +136,21 @@ void LoginWindow::on_login_button_clicked()
 
     } else {
         ui->notification_sign_in->setStyleSheet(notification_style.value("error"));
-        ui->notification_sign_in->setText("Wrong password or other errors!");
+        ui->notification_sign_in->setText(tr("Wrong password or other errors!"));
     }
 }
 
 void LoginWindow::on_create_button_clicked()
 {
     ui->notification_sign_up->setStyleSheet(notification_style.value("default"));
-    ui->notification_sign_up->setText("Enter and confirm a password to encrypt");
+    ui->notification_sign_up->setText(tr("Enter and confirm a password to encrypt"));
 
     QString new_password = ui->new_password_sign_up->text().trimmed();
     QString repeat_password = ui->repeat_password_sign_up->text().trimmed();
 
     if (new_password == "" && repeat_password == "") { // without password
 
-        QMessageBox::StandardButton empty_password = QMessageBox::question(this, "Password is empty", "Are you sure you don't want to use encryption?");
+        QMessageBox::StandardButton empty_password = QMessageBox::question(this, tr("Password is empty"), tr("Are you sure you don't want to use encryption?"));
         if (empty_password == QMessageBox::No) {
             return;
         }
@@ -170,7 +170,7 @@ void LoginWindow::on_create_button_clicked()
     if (new_password != repeat_password) { // passwords don't match
 
         ui->notification_sign_up->setStyleSheet(notification_style.value("error"));
-        ui->notification_sign_up->setText("Attention, Passwords don't match!");
+        ui->notification_sign_up->setText(tr("Attention, Passwords don't match!"));
 
         return;
     }
@@ -179,7 +179,7 @@ void LoginWindow::on_create_button_clicked()
 
     if (ui->use_hwid_sign_up->isChecked()) { // alert about "Encrypt for this device only" function
 
-        QMessageBox::StandardButton empty_password = QMessageBox::question(this, "Attention", "The \"Encrypt for this device only\" function means that you cannot decrypt database file with your data using another computer.\nSince encryption is done using the HWID. Are you sure?");
+        QMessageBox::StandardButton empty_password = QMessageBox::question(this, tr("Attention"), tr("The \"Encrypt for this device only\" function means that you cannot decrypt database file with your data using another computer.\nSince encryption is done using the HWID. Are you sure?"));
         if (empty_password == QMessageBox::No) {
             ui->use_hwid_sign_up->setChecked(false);
             return;
