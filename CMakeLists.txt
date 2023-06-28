@@ -23,15 +23,15 @@ set(TS_FILES
 )
 
 set(PROJECT_SOURCES
-        main.cpp
-        loginwindow.h loginwindow.cpp loginwindow.ui
-        mainwindow.cpp mainwindow.h mainwindow.ui
-        textindentdelegate.h textindentdelegate.cpp
-        about_author.h about_author.cpp about_author.ui
-        about_qt_window.h about_qt_window.cpp about_qt_window.ui
-        encryption.h encryption.cpp encryption.ui
-        version.h
-        string_encryption.h string_encryption.cpp
+        src/main.cpp
+        src/loginwindow.h src/loginwindow.cpp src/loginwindow.ui
+        src/mainwindow.cpp src/mainwindow.h src/mainwindow.ui
+        src/textindentdelegate.h src/textindentdelegate.cpp
+        src/about_author.h src/about_author.cpp src/about_author.ui
+        src/about_qt_window.h src/about_qt_window.cpp src/about_qt_window.ui
+        src/encryption.h src/encryption.cpp src/encryption.ui
+        src/version.h
+        src/string_encryption.h src/string_encryption.cpp
         ${TS_FILES}
 )
 
