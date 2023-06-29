@@ -1060,7 +1060,7 @@ background-color: #C2DEF4;
               </property>
               <property name="maximumSize">
                <size>
-                <width>244</width>
+                <width>16777215</width>
                 <height>54</height>
                </size>
               </property>
@@ -1160,10 +1160,29 @@ background-color: #C2DEF4;
              <layout class="QHBoxLayout" name="horizontalLayout_10">
               <item>
                <widget class="QCheckBox" name="use_hwid_decrypt">
+                <property name="maximumSize">
+                 <size>
+                  <width>16777215</width>
+                  <height>16777215</height>
+                 </size>
+                </property>
                 <property name="text">
                  <string>Encrypted for this device</string>
                 </property>
                </widget>
+              </item>
+              <item>
+               <spacer name="horizontalSpacer_9">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>10</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
               </item>
               <item>
                <widget class="QPushButton" name="decrypt_button">
