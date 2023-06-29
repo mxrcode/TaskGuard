@@ -14,7 +14,7 @@
    <string>About Author</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="application.qrc">
+   <iconset resource="../resources/application.qrc">
     <normaloff>:/img/logo-dark.svg</normaloff>:/img/logo-dark.svg</iconset>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
@@ -369,7 +369,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
   </layout>
  </widget>
  <resources>
-  <include location="application.qrc"/>
+  <include location="../resources/application.qrc"/>
  </resources>
  <connections/>
 </ui>

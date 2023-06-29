@@ -136,7 +136,7 @@ background: #636872;
             <string/>
            </property>
            <property name="icon">
-            <iconset resource="application.qrc">
+            <iconset resource="../resources/application.qrc">
              <normaloff>:/img/plus.svg</normaloff>:/img/plus.svg</iconset>
            </property>
            <property name="iconSize">
@@ -212,7 +212,7 @@ background: #636872;
             <string/>
            </property>
            <property name="icon">
-            <iconset resource="application.qrc">
+            <iconset resource="../resources/application.qrc">
              <normaloff>:/img/encrypt.svg</normaloff>:/img/encrypt.svg</iconset>
            </property>
            <property name="iconSize">
@@ -345,7 +345,7 @@ background: #DBDCDD;
             <string/>
            </property>
            <property name="icon">
-            <iconset resource="application.qrc">
+            <iconset resource="../resources/application.qrc">
              <normaloff>:/img/search.svg</normaloff>:/img/search.svg</iconset>
            </property>
            <property name="iconSize">
@@ -394,7 +394,7 @@ background: #DBDCDD;
             <string/>
            </property>
            <property name="icon">
-            <iconset resource="application.qrc">
+            <iconset resource="../resources/application.qrc">
              <normaloff>:/img/plus-circle.svg</normaloff>:/img/plus-circle.svg</iconset>
            </property>
            <property name="iconSize">
@@ -564,7 +564,7 @@ background: #DBDCDD;
             <string/>
            </property>
            <property name="icon">
-            <iconset resource="application.qrc">
+            <iconset resource="../resources/application.qrc">
              <normaloff>:/img/alarm.svg</normaloff>:/img/alarm.svg</iconset>
            </property>
            <property name="iconSize">
@@ -757,7 +757,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
   </widget>
  </widget>
  <resources>
-  <include location="application.qrc"/>
+  <include location="../resources/application.qrc"/>
  </resources>
  <connections/>
 </ui>

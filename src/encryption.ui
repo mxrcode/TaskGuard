@@ -258,7 +258,7 @@ background-color: #C2DEF4;
              <string/>
             </property>
             <property name="icon">
-             <iconset resource="application.qrc">
+             <iconset resource="../resources/application.qrc">
               <normaloff>:/img/eye.svg</normaloff>:/img/eye.svg</iconset>
             </property>
            </widget>
@@ -389,7 +389,7 @@ background-color: #C2DEF4;
              <string/>
             </property>
             <property name="icon">
-             <iconset resource="application.qrc">
+             <iconset resource="../resources/application.qrc">
               <normaloff>:/img/eye.svg</normaloff>:/img/eye.svg</iconset>
             </property>
            </widget>
@@ -632,7 +632,7 @@ background-color: #C2DEF4;
                  <string/>
                 </property>
                 <property name="icon">
-                 <iconset resource="application.qrc">
+                 <iconset resource="../resources/application.qrc">
                   <normaloff>:/img/eye.svg</normaloff>:/img/eye.svg</iconset>
                 </property>
                </widget>
@@ -698,7 +698,7 @@ background-color: #C2DEF4;
                  <string/>
                 </property>
                 <property name="icon">
-                 <iconset resource="application.qrc">
+                 <iconset resource="../resources/application.qrc">
                   <normaloff>:/img/eye.svg</normaloff>:/img/eye.svg</iconset>
                 </property>
                </widget>
@@ -872,7 +872,7 @@ background-color: #C2DEF4;
                  <string/>
                 </property>
                 <property name="icon">
-                 <iconset resource="application.qrc">
+                 <iconset resource="../resources/application.qrc">
                   <normaloff>:/img/eye.svg</normaloff>:/img/eye.svg</iconset>
                 </property>
                </widget>
@@ -1120,7 +1120,7 @@ background-color: #C2DEF4;
                  <string/>
                 </property>
                 <property name="icon">
-                 <iconset resource="application.qrc">
+                 <iconset resource="../resources/application.qrc">
                   <normaloff>:/img/eye.svg</normaloff>:/img/eye.svg</iconset>
                 </property>
                </widget>
@@ -1276,7 +1276,7 @@ background-color: #C2DEF4;
   </widget>
  </widget>
  <resources>
-  <include location="application.qrc"/>
+  <include location="../resources/application.qrc"/>
  </resources>
  <connections/>
 </ui>
