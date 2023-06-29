@@ -1314,7 +1314,7 @@ void MainWindow::on_group_add_clicked()
     if (result == QDialog::Accepted) {
         QString name = line_edit->text();
         if (name == "") {
-            name = "Undefined";
+            name = tr("Undefined");
         }
 
         db_add_group(name, 1);
@@ -1334,7 +1334,7 @@ void MainWindow::on_task_search_clicked()
 {
     if (ui->task_search_edit->isHidden()) {
         ui->task_search_edit->show();
-        ui->task_search_edit->setPlaceholderText("Search...");
+        ui->task_search_edit->setPlaceholderText(tr("Search..."));
 
         connect(ui->task_search_edit, &QLineEdit::textChanged, [this]() {
 

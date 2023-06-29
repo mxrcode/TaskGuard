@@ -78,7 +78,7 @@ public:
     int db_group_position(unsigned int group_id);
     bool db_rm_group(unsigned int group_id);
     bool db_add_task(int group_id = 1,
-                     QString title = "Undefined",
+                     QString title = tr("Undefined"),
                      QString text = "",
                      QString task_status = "active",
                      int alarm = 0,
