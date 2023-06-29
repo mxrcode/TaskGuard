@@ -17,7 +17,7 @@
         <location filename="../loginwindow.ui" line="226"/>
         <location filename="../loginwindow.ui" line="746"/>
         <source>Remember on device</source>
-        <translation type="unfinished">Запам&apos;ятати на пристрої</translation>
+        <translation type="unfinished">Запам&apos;ятати</translation>
     </message>
     <message>
         <location filename="../loginwindow.ui" line="247"/>
@@ -32,7 +32,7 @@
     <message>
         <location filename="../loginwindow.ui" line="370"/>
         <source>Encrypt for this device only</source>
-        <translation type="unfinished">Шифрувати тільки для цього пристрою</translation>
+        <translation type="unfinished">Лише для цього пристрою</translation>
     </message>
     <message>
         <location filename="../loginwindow.ui" line="404"/>
@@ -44,7 +44,7 @@
     <message>
         <location filename="../loginwindow.ui" line="511"/>
         <source>Encrypted for this device only</source>
-        <translation type="unfinished">Зашифровано лише для цього пристрою</translation>
+        <translation type="unfinished">Лише для цього пристрою</translation>
     </message>
     <message>
         <location filename="../loginwindow.ui" line="625"/>
@@ -59,7 +59,7 @@
     <message>
         <location filename="../loginwindow.ui" line="767"/>
         <source>Log In</source>
-        <translation type="unfinished">Увійдіть</translation>
+        <translation type="unfinished">Увійти</translation>
     </message>
     <message>
         <location filename="../loginwindow.cpp" line="20"/>
@@ -72,7 +72,7 @@
         <location filename="../loginwindow.cpp" line="73"/>
         <location filename="../loginwindow.cpp" line="139"/>
         <source>Wrong password or other errors!</source>
-        <translation type="unfinished">Неправильний пароль або інші помилки!</translation>
+        <translation type="unfinished">Неправильний пароль!</translation>
     </message>
     <message>
         <location filename="../loginwindow.cpp" line="153"/>
@@ -99,7 +99,7 @@
         <source>The &quot;Encrypt for this device only&quot; function means that you cannot decrypt database file with your data using another computer.
 Since encryption is done using the HWID. Are you sure?</source>
         <translation type="unfinished">Функція &quot;Шифрувати тільки для цього пристрою&quot; означає, що ви не зможете розшифрувати файл бази даних з вашими даними на іншому комп&apos;ютері.
-        Так як шифрування відбувається з використанням HWID. Ви впевнені?</translation>
+Так як шифрування відбувається з використанням HWID. Ви впевнені?</translation>
     </message>
 </context>
 <context>
@@ -122,12 +122,12 @@ Since encryption is done using the HWID. Are you sure?</source>
     <message>
         <location filename="../mainwindow.ui" line="522"/>
         <source>Alert:</source>
-        <translation type="unfinished">Увага:</translation>
+        <translation type="unfinished">Сповіщення:</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="695"/>
         <source>Updated:</source>
-        <translation type="unfinished">Оновлений:</translation>
+        <translation type="unfinished">Оновлено:</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="724"/>
@@ -137,7 +137,7 @@ Since encryption is done using the HWID. Are you sure?</source>
     <message>
         <location filename="../mainwindow.cpp" line="50"/>
         <source>Rename Selected</source>
-        <translation type="unfinished">Перейменувати вибране</translation>
+        <translation type="unfinished">Перейменувати обране</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="66"/>
@@ -170,7 +170,7 @@ Since encryption is done using the HWID. Are you sure?</source>
         <source> is not a valid integer.
 Also, don&apos;t use 0.</source>
         <translation type="unfinished"> не є дійсним цілим числом.
-        Також не використовуйте 0.</translation>
+Також не використовуйте 0.</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="147"/>
@@ -186,7 +186,7 @@ Also, don&apos;t use 0.</source>
         <location filename="../mainwindow.cpp" line="162"/>
         <location filename="../mainwindow.cpp" line="274"/>
         <source>Delete selected</source>
-        <translation type="unfinished">Видалити вибране</translation>
+        <translation type="unfinished">Видалити обране</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="169"/>
@@ -216,7 +216,7 @@ Also, don&apos;t use 0.</source>
     <message>
         <location filename="../mainwindow.cpp" line="230"/>
         <source>Move selected</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Перемістити обране</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="252"/>
@@ -238,7 +238,7 @@ Also, don&apos;t use 0.</source>
         <location filename="../mainwindow.cpp" line="281"/>
         <location filename="../mainwindow.cpp" line="1500"/>
         <source>Are you sure you want to DELETE the selected task?</source>
-        <translation type="unfinished">Ви впевнені, що хочете ВИДАЛИТИ вибране завдання?</translation>
+        <translation type="unfinished">Ви впевнені, що хочете ВИДАЛИТИ обране завдання?</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="334"/>
@@ -375,6 +375,16 @@ Also, don&apos;t use 0.</source>
         <source>Notes</source>
         <translation type="unfinished">Нотатки</translation>
     </message>
+    <message>
+        <location filename="../src/mainwindow.cpp" line="1317"/>
+        <source>Undefined</source>
+        <translation type="unfinished">Нове завдання</translation>
+    </message>
+    <message>
+        <location filename="../src/mainwindow.cpp" line="1337"/>
+        <source>Search...</source>
+        <translation type="unfinished">Пошук...</translation>
+    </message>
 </context>
 <context>
     <name>about_author</name>
@@ -400,7 +410,7 @@ Also, don&apos;t use 0.</source>
         <location filename="../encryption.ui" line="198"/>
         <location filename="../encryption.cpp" line="109"/>
         <source>Enter a password to encrypt the database</source>
-        <translation type="unfinished">Введіть пароль для шифрування бази даних</translation>
+        <translation type="unfinished">Введіть пароль для шифрування бд</translation>
     </message>
     <message>
         <location filename="../encryption.ui" line="276"/>
@@ -412,7 +422,7 @@ Also, don&apos;t use 0.</source>
         <location filename="../encryption.ui" line="330"/>
         <location filename="../encryption.ui" line="730"/>
         <source>Remember on device</source>
-        <translation type="unfinished">Запам'ятати на пристрої</translation>
+        <translation type="unfinished">Запам'ятати</translation>
     </message>
     <message>
         <location filename="../encryption.ui" line="343"/>
@@ -429,7 +439,7 @@ Also, don&apos;t use 0.</source>
         <location filename="../encryption.ui" line="445"/>
         <location filename="../encryption.ui" line="716"/>
         <source>Encrypt for this device only</source>
-        <translation type="unfinished">Шифрувати лише для цього пристрою</translation>
+        <translation type="unfinished">Лише для цього пристрою</translation>
     </message>
     <message>
         <location filename="../encryption.ui" line="484"/>
@@ -467,7 +477,7 @@ Also, don&apos;t use 0.</source>
     <message>
         <location filename="../encryption.ui" line="1164"/>
         <source>Encrypted for this device</source>
-        <translation type="unfinished">Зашифровано для цього пристрою</translation>
+        <translation type="unfinished">Лише для цього пристрою</translation>
     </message>
     <message>
         <location filename="../encryption.ui" line="1177"/>
@@ -502,7 +512,7 @@ Also, don&apos;t use 0.</source>
         <source>The &quot;Encrypt for this device only&quot; function means that you cannot decrypt database file with your data using another computer.
 Since encryption is done using the HWID. Are you sure?</source>
         <translation type="unfinished">Функція "Шифрувати тільки для цього пристрою" означає, що ви не зможете розшифрувати файл бази даних з вашими даними на іншому комп'ютері.
-        Так як шифрування відбувається з використанням HWID. Ви впевнені?</translation>
+Так як шифрування відбувається з використанням HWID. Ви впевнені?</translation>
     </message>
     <message>
         <location filename="../encryption.cpp" line="160"/>
@@ -525,7 +535,7 @@ Since encryption is done using the HWID. Are you sure?</source>
         <source>The database will be decrypted, are you sure you want to do that?
 The data will no longer be protected!</source>
         <translation type="unfinished">База даних буде розшифрована, ви впевнені, що хочете це зробити?
-        Дані більше не будуть захищені!</translation>
+Дані більше не будуть захищені!</translation>
     </message>
     <message>
         <location filename="../encryption.cpp" line="277"/>
