@@ -472,7 +472,7 @@ Also, don&apos;t use 0.</source>
         <location filename="../encryption.ui" line="1076"/>
         <location filename="../encryption.cpp" line="242"/>
         <source>Enter a password to decrypt the database</source>
-        <translation>Введите пароль для расшифрования</translation>
+        <translation>Введите пароль для расшифрования БД</translation>
     </message>
     <message>
         <location filename="../encryption.ui" line="1164"/>
