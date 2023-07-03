@@ -22,12 +22,19 @@ int main(int argc, char *argv[])
     app.setWindowIcon(QIcon(":/img/logo-dark.svg"));
 
     QTranslator translator;
-    const QStringList ui_languages = QLocale::system().uiLanguages();
-    for (const QString &locale : ui_languages) {
-        const QString base_name = SOFT_NAME + "_" + QLocale(locale).name();
-        if (translator.load("translations/" + base_name)) {
+    QString current_lang = restore_settings("lang");
+    if (current_lang == "system_system" || current_lang.isEmpty() || current_lang == "") {
+        const QStringList ui_languages = QLocale::system().uiLanguages();
+        for (const QString &locale : ui_languages) {
+            const QString base_name = QLocale(locale).name();
+            if (translator.load("translations/" + base_name)) {
+                app.installTranslator(&translator);
+                break;
+            }
+        }
+    } else {
+        if (translator.load("translations/" + current_lang)) {
             app.installTranslator(&translator);
-            break;
         }
     }
 

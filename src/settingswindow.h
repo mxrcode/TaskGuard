@@ -4,6 +4,12 @@
 #include <QMainWindow>
 #include <QCloseEvent>
 #include <QTranslator>
+#include <QDir>
+#include <QComboBox>
+#include <QFileInfoList>
+#include <QMap>
+#include <QSettings>
+#include <QProcess>
 
 #include "version.h"
 
@@ -24,6 +30,9 @@ protected:
     void closeEvent(QCloseEvent *event) override;
 
 signals:
+
+private slots:
+    void on_save_settings_clicked();
 
 private:
     Ui::SettingsWindow *ui;

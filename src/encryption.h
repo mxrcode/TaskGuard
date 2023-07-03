@@ -28,9 +28,6 @@ public:
     explicit encryption(QMainWindow *parent = nullptr);
     ~encryption();
 
-    void save_settings(QString name, QString data);
-    QString restore_settings(QString name);
-
     void open_widget();
     void set_data(bool encryption, QString password, QSqlDatabase *db, QString db_path);
 

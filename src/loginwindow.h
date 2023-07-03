@@ -30,9 +30,6 @@ public:
     void window_data_wipe();
     void show_me();
 
-    void save_settings(QString name, QString data);
-    QString restore_settings(QString name);
-
 private slots:
     void on_login_button_clicked();
 

@@ -209,18 +209,6 @@ void LoginWindow::on_create_button_clicked()
     login_status = true;
 }
 
-void LoginWindow::save_settings(QString name, QString data) {
-
-    QSettings settings("mxrcode", SOFT_NAME);
-    settings.setValue(name, data);
-}
-
-QString LoginWindow::restore_settings(QString name) {
-
-    QSettings settings("mxrcode", SOFT_NAME);
-    return settings.value(name).toString();
-}
-
 void LoginWindow::on_new_password_sign_up_eye_button_pressed()
 {
     ui->new_password_sign_up_eye_button->setIcon(QIcon(":/img/eye-white.svg"));

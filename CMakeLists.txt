@@ -16,10 +16,10 @@ find_package(OpenSSL REQUIRED)
 include_directories(${OPENSSL_INCLUDE_DIR})
 
 set(TS_FILES
-    translations/TaskGuard_en_US.ts
-    translations/TaskGuard_uk_UA.ts
-    translations/TaskGuard_ru_RU.ts
-    translations/TaskGuard_es_ES.ts
+    translations/en_US.ts
+    translations/uk_UA.ts
+    translations/ru_RU.ts
+    translations/es_ES.ts
 )
 
 set(PROJECT_SOURCES
@@ -31,7 +31,7 @@ set(PROJECT_SOURCES
         src/about_qt_window.h src/about_qt_window.cpp src/about_qt_window.ui
         src/encryption.h src/encryption.cpp src/encryption.ui
         src/settingswindow.h src/settingswindow.cpp src/settingswindow.ui
-        src/version.h
+        src/version.h src/version.cpp
         src/string_encryption.h src/string_encryption.cpp
         ${TS_FILES}
 )

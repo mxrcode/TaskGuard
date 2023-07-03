@@ -165,18 +165,6 @@ void encryption::on_encrypt_button_clicked()
     std::exit(0);
 }
 
-void encryption::save_settings(QString name, QString data) {
-
-    QSettings settings("mxrcode", SOFT_NAME);
-    settings.setValue(name, data);
-}
-
-QString encryption::restore_settings(QString name) {
-
-    QSettings settings("mxrcode", SOFT_NAME);
-    return settings.value(name).toString();
-}
-
 void encryption::on_change_password_button_clicked()
 {
     ui->other_action_stacked_widget->setCurrentWidget(ui->change_password);
@@ -192,7 +180,6 @@ void encryption::on_current_password_decrypt_eye_button_pressed()
     ui->current_password_decrypt_eye_button->setIcon(QIcon(":/img/eye-white.svg"));
     ui->current_password_decrypt->setEchoMode(QLineEdit::Normal);
 }
-
 
 void encryption::on_current_password_decrypt_eye_button_released()
 {
