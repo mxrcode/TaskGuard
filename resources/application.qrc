@@ -11,5 +11,6 @@
         <file>../img/eye.svg</file>
         <file>../img/eye-white.svg</file>
         <file>../img/encrypt.svg</file>
+        <file>../img/settings.svg</file>
     </qresource>
 </RCC>

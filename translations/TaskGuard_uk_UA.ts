@@ -579,4 +579,12 @@ The data will no longer be protected!</source>
         <translation type="unfinished">Помилка при спробі відкрити базу даних після зміни пароля!</translation>
     </message>
 </context>
+<context>
+    <name>SettingsWindow</name>
+    <message>
+        <location filename="../src/settingswindow.cpp" line="13"/>
+        <source>Settings</source>
+        <translation type="unfinished">Налаштування</translation>
+    </message>
+</context>
 </TS>

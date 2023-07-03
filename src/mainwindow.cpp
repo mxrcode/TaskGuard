@@ -30,6 +30,7 @@ bool MainWindow::setup_MainWindow(bool password_state, QString password, bool hw
     create_tray_icon();
 
     encryption_window = new encryption(this);
+    settings_window = new SettingsWindow(this);
 
     setWindowIcon(QIcon(":/img/logo-dark.svg"));
 
@@ -1489,6 +1490,11 @@ void MainWindow::on_encryption_button_clicked()
 {
     encryption_window->set_data(use_encryption, g_db_password, &db, g_db_path);
     encryption_window->open_widget();
+}
+
+void MainWindow::on_settings_button_clicked()
+{
+    settings_window->open_widget();
 }
 
 void MainWindow::keyPressEvent(QKeyEvent *event) {

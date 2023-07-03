@@ -132,6 +132,8 @@ void LoginWindow::on_login_button_clicked()
         window_data_wipe();
         this->hide();
 
+        login_status = true;
+
         if (remember_on_device == true && t_password != "") save_settings("en_key", magic_encrypt(t_password, MAGIC));
 
     } else {
@@ -163,6 +165,8 @@ void LoginWindow::on_create_button_clicked()
         mainWindow.show();
         window_data_wipe();
         this->hide();
+
+        login_status = true;
 
         return;
     }
@@ -201,6 +205,8 @@ void LoginWindow::on_create_button_clicked()
     mainWindow.show();
     window_data_wipe();
     this->hide();
+
+    login_status = true;
 }
 
 void LoginWindow::save_settings(QString name, QString data) {
@@ -256,3 +262,11 @@ void LoginWindow::on_password_sign_in_eye_button_released()
     ui->password_sign_in->setEchoMode(QLineEdit::Password);
 }
 
+void LoginWindow::show_me() {
+    if (login_status == true) {
+        if (mainWindow.isHidden()) mainWindow.show();
+    } else {
+        this->show();
+        this->activateWindow();
+    }
+}

@@ -30,6 +30,10 @@
 #include <QComboBox>
 #include <QTranslator>
 
+#include <QSystemSemaphore>
+#include <QLocalSocket>
+#include <QLocalServer>
+
 #include <QSqlDatabase>
 #include <QSqlDriver>
 #include <QSqlQuery>
@@ -51,6 +55,7 @@
 #include "string_encryption.h"
 
 #include "encryption.h"
+#include "settingswindow.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -138,6 +143,8 @@ public:
     about_author author_window;
     encryption *encryption_window;
 
+    SettingsWindow *settings_window;
+
 public slots:
     void handle_notification_clicked();
 
@@ -156,6 +163,8 @@ private slots:
     void on_task_search_clicked();
 
     void on_encryption_button_clicked();
+
+    void on_settings_button_clicked();
 
 private:
     Ui::MainWindow *ui;

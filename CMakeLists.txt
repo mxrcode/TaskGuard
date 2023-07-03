@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.5)
 
-project(TaskGuard VERSION 1.1.1 LANGUAGES CXX)
+project(TaskGuard VERSION 1.2.0 LANGUAGES CXX)
 
 set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTOMOC ON)
@@ -9,8 +9,8 @@ set(CMAKE_AUTORCC ON)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets LinguistTools Sql)
-find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets LinguistTools Sql)
+find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets LinguistTools Sql Network)
+find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets LinguistTools Sql Network)
 
 find_package(OpenSSL REQUIRED)
 include_directories(${OPENSSL_INCLUDE_DIR})
@@ -30,6 +30,7 @@ set(PROJECT_SOURCES
         src/about_author.h src/about_author.cpp src/about_author.ui
         src/about_qt_window.h src/about_qt_window.cpp src/about_qt_window.ui
         src/encryption.h src/encryption.cpp src/encryption.ui
+        src/settingswindow.h src/settingswindow.cpp src/settingswindow.ui
         src/version.h
         src/string_encryption.h src/string_encryption.cpp
         ${TS_FILES}
@@ -64,7 +65,7 @@ else()
     qt5_create_translation(QM_FILES ${CMAKE_SOURCE_DIR} ${TS_FILES})
 endif()
 
-target_link_libraries(TaskGuard PRIVATE Qt${QT_VERSION_MAJOR}::Widgets Qt${QT_VERSION_MAJOR}::Sql ${OPENSSL_LIBRARIES})
+target_link_libraries(TaskGuard PRIVATE Qt${QT_VERSION_MAJOR}::Widgets Qt${QT_VERSION_MAJOR}::Sql  Qt${QT_VERSION_MAJOR}::Network ${OPENSSL_LIBRARIES})
 
 set_target_properties(TaskGuard PROPERTIES
     MACOSX_BUNDLE_GUI_IDENTIFIER my.example.com

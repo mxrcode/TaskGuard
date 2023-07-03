@@ -28,6 +28,7 @@ public:
     ~LoginWindow();
 
     void window_data_wipe();
+    void show_me();
 
     void save_settings(QString name, QString data);
     QString restore_settings(QString name);
@@ -55,6 +56,8 @@ private:
     MainWindow mainWindow;
 
     QMap<QString, QString> notification_style;
+
+    bool login_status = false;
 };
 
 #endif // LOGINWINDOW_H
