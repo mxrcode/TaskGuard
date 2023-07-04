@@ -13,6 +13,7 @@ TaskGuard is a to-do list application that helps you manage your tasks in a simp
 - Password encryption: TaskGuard encrypts your **password** using **AES-256-CBC**, ensuring that it is securely stored in the system.
 - **Hardware ID (HWID) encryption**: TaskGuard provides an additional layer of security by allowing you to encrypt the database using your computer's HWID. This makes the database file useless on  another computer, even if an intruder has the password.
 - **Cross-platform**: TaskGuard is currently written and compiled for Windows using C++ and Qt 6.4.3, but it can be compiled for other systems as well.
+- Already available in **4 languages**: English, Ukrainian, Russian, Spanish.
 
 ## License
 TaskGuard is released under the GNU Lesser General Public License (LGPL-3.0), which means it is free and open-source software that you can use, modify, and distribute. Please refer to the [LICENSE](https://github.com/mxrcode/TaskGuard/blob/main/LICENSE) file for more details.
