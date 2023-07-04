@@ -32,6 +32,9 @@ bool MainWindow::setup_MainWindow(bool password_state, QString password, bool hw
     encryption_window = new encryption(this);
     settings_window = new SettingsWindow(this);
 
+    update_checker = new UpdateChecker(this);
+    update_checker->check();
+
     setWindowIcon(QIcon(":/img/logo-dark.svg"));
 
     ui->task_groups_frame->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);

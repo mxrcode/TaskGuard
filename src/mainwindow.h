@@ -56,6 +56,7 @@
 
 #include "encryption.h"
 #include "settingswindow.h"
+#include "updatechecker.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -144,6 +145,8 @@ public:
     encryption *encryption_window;
 
     SettingsWindow *settings_window;
+
+    UpdateChecker *update_checker;
 
 public slots:
     void handle_notification_clicked();

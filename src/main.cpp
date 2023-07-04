@@ -17,7 +17,7 @@ int main(int argc, char *argv[])
 
     QApplication app(argc, argv);
 
-    qInstallMessageHandler(message_handler); // Output debug info to qInfo.log | Disable for Debug
+//    qInstallMessageHandler(message_handler); // Output debug info to qInfo.log | Disable for Debug
 
     app.setWindowIcon(QIcon(":/img/logo-dark.svg"));
 

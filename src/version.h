@@ -6,10 +6,10 @@
 #include <QCryptographicHash>
 
 const QString SOFT_NAME = "TaskGuard";
-const QString SOFT_VERSION = "1.2.0";
+const QString SOFT_VERSION = "1.2.1";
 
 // Used to encrypt various data in the application, we recommend that you change this value "QString(value)" for private use.
-const QString MAGIC = QCryptographicHash::hash(QString("XNN02Ot7VbVfNBix8psmIXow1zcVu5fCknu&1uPVvynfNwdkCPH4OAOUPDJQbOzbW0Ykroi8GMMiS4qhzm6N57AUJv3yeleTRuedBAert7QEqTe3RQvU2sAKX4XVXPAe").toUtf8() + QSysInfo::machineUniqueId(), QCryptographicHash::Blake2b_512).toHex();
+const QString MAGIC = QCryptographicHash::hash(QString("e@txAaCLhYnlmwFSuG3#ADJaGdF3HElOWr1bC8FOlxD1lS25HjgDHS5oQL8BNDUuHKr&WTfEfRh#zzsd6jid9vEFEEVAwurqI2zy1dKed35uswIqhn7WmHCN4BGpo2lg").toUtf8() + QSysInfo::machineUniqueId(), QCryptographicHash::Blake2b_512).toHex();
 
 // Settings
 void save_settings(QString name, QString data);
