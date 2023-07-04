@@ -15,6 +15,17 @@ TaskGuard is a to-do list application that helps you manage your tasks in a simp
 - **Cross-platform**: TaskGuard is currently written and compiled for Windows using C++ and Qt 6.4.3, but it can be compiled for other systems as well.
 - Already available in **4 languages**: English, Ukrainian, Russian, Spanish.
 
+## Installation
+*Dependencies must be installed in the system for the program to run and work correctly.*
+
+- Download latest version of the widget https://github.com/mxrcode/TaskGuard/releases
+- Unpack the **.zip** archive to any place convenient for you
+- Run the app with **TaskGuard.exe**
+
+*An icon should appear in the tray by clicking on which a menu for interacting with the widget will appear. There you can configure it and add the program to autorun.*
+
+**Dependencies:** [vcredist_x64(2015-2022)](https://aka.ms/vs/17/release/vc_redist.x64.exe) [(x86)](https://aka.ms/vs/17/release/vc_redist.x86.exe) 
+
 ## License
 TaskGuard is released under the GNU Lesser General Public License (LGPL-3.0), which means it is free and open-source software that you can use, modify, and distribute. Please refer to the [LICENSE](https://github.com/mxrcode/TaskGuard/blob/main/LICENSE) file for more details.
 
