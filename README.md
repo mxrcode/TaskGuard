@@ -18,7 +18,7 @@ TaskGuard is a to-do list application that helps you manage your tasks in a simp
 ## Installation
 *Dependencies must be installed in the system for the program to run and work correctly.*
 
-- Download latest version of the widget https://github.com/mxrcode/TaskGuard/releases
+- Download the latest version of TaskGuard https://github.com/mxrcode/TaskGuard/releases
 - Unpack the **.zip** archive to any place convenient for you
 - Run the app with **TaskGuard.exe**
 
