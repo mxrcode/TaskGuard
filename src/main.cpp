@@ -40,7 +40,7 @@ int main(int argc, char *argv[])
 
     // CHECK IF THE APPLICATION IS RUNNING
     // IF SO, SEND THEM A REQUEST TO ACTIVATE THE WINDOW AND CLOSE THE CURRENT COPY
-    const QString APP_ID = QCryptographicHash::hash(QString(QCoreApplication::applicationFilePath() + "-" + SOFT_NAME + "-" + SOFT_VERSION).toUtf8(), QCryptographicHash::Md5);
+    const QString APP_ID = QCryptographicHash::hash(QString(QCoreApplication::applicationFilePath() + "-" + SOFT_NAME + "-" + SOFT_VERSION).toUtf8(), QCryptographicHash::Md5).toHex();
 
     QLocalSocket socket;
     socket.connectToServer(APP_ID);
