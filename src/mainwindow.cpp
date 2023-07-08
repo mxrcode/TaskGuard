@@ -1438,56 +1438,104 @@ void MainWindow::create_tray_icon() {
 
 }
 
-bool MainWindow::is_soft_in_autorun()
-{
-    QString startup_dir = QDir::toNativeSeparators(QStandardPaths::standardLocations(QStandardPaths::ApplicationsLocation).first()) + QDir::separator() + "Startup" + QDir::separator();
-    QString lnk_path = startup_dir + SOFT_NAME + ".lnk";
+#ifdef Q_OS_WIN
+    bool MainWindow::is_soft_in_autorun()
+    {
+        QString startup_dir = QDir::toNativeSeparators(QStandardPaths::standardLocations(QStandardPaths::ApplicationsLocation).first()) + QDir::separator() + "Startup" + QDir::separator();
+        QString lnk_path = startup_dir + SOFT_NAME + ".lnk";
 
-    QFile link(lnk_path);
-    if (link.exists()) {
-        return true;
-    } else {
-        return false;
-    }
-}
-
-void MainWindow::add_soft_to_autorun() {
-
-    QString startup_dir = QDir::toNativeSeparators(QStandardPaths::standardLocations(QStandardPaths::ApplicationsLocation).first()) + QDir::separator() + "Startup" + QDir::separator();
-    QString lnk_path = startup_dir + SOFT_NAME + ".lnk";
-
-    QFile link(lnk_path);
-    if (link.exists()) {
-        link.remove();
-    }
-
-    IShellLink *shell_link;
-    CoInitialize(NULL);
-    HRESULT result = CoCreateInstance(CLSID_ShellLink, NULL, CLSCTX_INPROC_SERVER, IID_IShellLink, reinterpret_cast<void**>(&shell_link));
-    if (result == S_OK) {
-        IPersistFile *persist_file;
-        shell_link->SetPath(reinterpret_cast<const wchar_t *>(QDir::toNativeSeparators(qApp->applicationFilePath()).utf16()));
-        shell_link->SetWorkingDirectory(reinterpret_cast<const wchar_t *>(QDir::toNativeSeparators(qApp->applicationDirPath()).utf16()));
-        result = shell_link->QueryInterface(IID_IPersistFile, reinterpret_cast<void**>(&persist_file));
-        if (result == S_OK) {
-            persist_file->Save(reinterpret_cast<const wchar_t *>(lnk_path.utf16()), TRUE);
-            persist_file->Release();
+        QFile link(lnk_path);
+        if (link.exists()) {
+            return true;
+        } else {
+            return false;
         }
-        shell_link->Release();
     }
-    CoUninitialize();
-}
 
-void MainWindow::remove_soft_from_autorun()
-{
-    QString startup_dir = QDir::toNativeSeparators(QStandardPaths::standardLocations(QStandardPaths::ApplicationsLocation).first()) + QDir::separator() + "Startup" + QDir::separator();
-    QString lnk_path = startup_dir + SOFT_NAME + ".lnk";
+    void MainWindow::add_soft_to_autorun() {
 
-    QFile link(lnk_path);
-    if (link.exists()) {
-        link.remove();
+        QString startup_dir = QDir::toNativeSeparators(QStandardPaths::standardLocations(QStandardPaths::ApplicationsLocation).first()) + QDir::separator() + "Startup" + QDir::separator();
+        QString lnk_path = startup_dir + SOFT_NAME + ".lnk";
+
+        QFile link(lnk_path);
+        if (link.exists()) {
+            link.remove();
+        }
+
+        IShellLink *shell_link;
+        CoInitialize(NULL);
+        HRESULT result = CoCreateInstance(CLSID_ShellLink, NULL, CLSCTX_INPROC_SERVER, IID_IShellLink, reinterpret_cast<void**>(&shell_link));
+        if (result == S_OK) {
+            IPersistFile *persist_file;
+            shell_link->SetPath(reinterpret_cast<const wchar_t *>(QDir::toNativeSeparators(qApp->applicationFilePath()).utf16()));
+            shell_link->SetWorkingDirectory(reinterpret_cast<const wchar_t *>(QDir::toNativeSeparators(qApp->applicationDirPath()).utf16()));
+            result = shell_link->QueryInterface(IID_IPersistFile, reinterpret_cast<void**>(&persist_file));
+            if (result == S_OK) {
+                persist_file->Save(reinterpret_cast<const wchar_t *>(lnk_path.utf16()), TRUE);
+                persist_file->Release();
+            }
+            shell_link->Release();
+        }
+        CoUninitialize();
     }
-}
+
+    void MainWindow::remove_soft_from_autorun()
+    {
+        QString startup_dir = QDir::toNativeSeparators(QStandardPaths::standardLocations(QStandardPaths::ApplicationsLocation).first()) + QDir::separator() + "Startup" + QDir::separator();
+        QString lnk_path = startup_dir + SOFT_NAME + ".lnk";
+
+        QFile link(lnk_path);
+        if (link.exists()) {
+            link.remove();
+        }
+    }
+#else
+    bool MainWindow::is_soft_in_autorun()
+    {
+        QString autostart_dir = QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + QDir::separator() + "autostart" + QDir::separator();
+        QString desktop_file_path = autostart_dir + SOFT_NAME + ".desktop";
+
+        QFile desktop_file(desktop_file_path);
+        return desktop_file.exists();
+    }
+
+    void MainWindow::add_soft_to_autorun()
+    {
+        QString autostart_dir = QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + QDir::separator() + "autostart" + QDir::separator();
+
+        // Create an autostart folder if it does not exist
+        QDir().mkpath(autostart_dir);
+
+        QString desktop_file_path = autostart_dir + SOFT_NAME + ".desktop";
+
+        QFile desktop_file(desktop_file_path);
+        if (desktop_file.exists()) {
+            desktop_file.remove();
+        }
+
+        QString desktop_file_content = "[Desktop Entry]\n"
+                                       "Type=Application\n"
+                                       "Exec=" + QCoreApplication::applicationFilePath() + "\n"
+                                                                                   "Path=" + QCoreApplication::applicationDirPath() + "\n"
+                                                                                  "Name=" + SOFT_NAME + "\n";
+
+        desktop_file.open(QIODevice::WriteOnly | QIODevice::Text);
+        QTextStream stream(&desktop_file);
+        stream << desktop_file_content;
+        desktop_file.close();
+    }
+
+    void MainWindow::remove_soft_from_autorun()
+    {
+        QString autostart_dir = QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + QDir::separator() + "autostart" + QDir::separator();
+        QString desktop_file_path = autostart_dir + SOFT_NAME + ".desktop";
+
+        QFile desktop_file(desktop_file_path);
+        if (desktop_file.exists()) {
+            desktop_file.remove();
+        }
+    }
+#endif
 
 void MainWindow::on_encryption_button_clicked()
 {

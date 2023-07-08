@@ -43,8 +43,10 @@
 #include <QByteArray>
 #include <QSettings>
 
-#include <Windows.h>
-#include <shlobj.h>
+#ifdef Q_OS_WIN
+    #include <windows.h>
+    #include <shlobj.h>
+#endif
 
 #include <algorithm>
 
