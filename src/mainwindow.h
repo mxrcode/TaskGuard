@@ -140,7 +140,7 @@ public:
     QIcon tray_svg = QIcon(":/img/logo-light.svg");
     QSystemTrayIcon *tray_icon = new QSystemTrayIcon(tray_svg, this);
     QMenu tray_menu;
-    about_qt_window about_qt_window;
+    about_qt_window qt_window;
     about_author author_window;
     encryption *encryption_window;
 

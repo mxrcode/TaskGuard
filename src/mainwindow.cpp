@@ -1407,7 +1407,7 @@ void MainWindow::create_tray_icon() {
     // About Qt
     QAction *about_qt = tray_menu.addAction("About Qt");
     QObject::connect(about_qt, &QAction::triggered, qApp, [&]() {
-        about_qt_window.show();
+        qt_window.show();
     });
 
     // Separator
