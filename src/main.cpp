@@ -17,7 +17,7 @@ int main(int argc, char *argv[])
 
     QApplication app(argc, argv);
 
-//    qInstallMessageHandler(message_handler); // Output debug info to qInfo.log | Disable for Debug
+    qInstallMessageHandler(message_handler); // Output debug info to qInfo.log | Disable for Debug
 
     app.setWindowIcon(QIcon(":/img/logo-dark.svg"));
 
@@ -40,7 +40,7 @@ int main(int argc, char *argv[])
 
     // CHECK IF THE APPLICATION IS RUNNING
     // IF SO, SEND THEM A REQUEST TO ACTIVATE THE WINDOW AND CLOSE THE CURRENT COPY
-    const QString APP_ID = QCryptographicHash::hash(QString(QCoreApplication::applicationFilePath() + "-" + SOFT_NAME + "-" + SOFT_VERSION).toUtf8(), QCryptographicHash::Blake2b_512);
+    const QString APP_ID = QCryptographicHash::hash(QString(QCoreApplication::applicationFilePath() + "-" + SOFT_NAME + "-" + SOFT_VERSION).toUtf8(), QCryptographicHash::Md5);
 
     QLocalSocket socket;
     socket.connectToServer(APP_ID);
