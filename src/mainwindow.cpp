@@ -1087,7 +1087,8 @@ void MainWindow::on_task_item_clicked(QListWidgetItem *item) {
 
         if (db_show_task(task_id)) {
             m_task_current_id = task_id;
-            auto_save();
+
+            if (auto_save_status == false) auto_save();
 
             ui->task_title->setCursorPosition(0);
             ui->task_view_frame->show();
@@ -1163,6 +1164,8 @@ void MainWindow::auto_save() {
         }
 
     });
+
+    auto_save_status = true;
 
 }
 

@@ -197,6 +197,8 @@ private:
     QString g_db_password;
     bool use_encryption = false;
     bool use_hwid = false;
+
+    bool auto_save_status = false;
 };
 
 #endif // MAINWINDOW_H
