@@ -1073,100 +1073,70 @@ void MainWindow::on_group_item_clicked(QListWidgetItem *item) {
 }
 
 void MainWindow::on_task_item_clicked(QListWidgetItem *item) {
+    if (item != nullptr) {
+        unsigned int task_id = item->data(Qt::UserRole).toUInt();
 
-    unsigned int task_id;
+        if (task_id > 0) {
+            m_task_current_id = 0;
 
-    if (item != 0x0) {
-        task_id = item->data(Qt::UserRole).toUInt();
-    } else {
-        task_id = 0;
-    }
+            if (db_show_task(task_id)) {
+                m_task_current_id = task_id;
 
-    if (task_id > 0) {
-        m_task_current_id = 0;
+                if (auto_save_status == false) {
+                    setup_auto_save();
+                    auto_save_status = true;
+                }
 
-        if (db_show_task(task_id)) {
-            m_task_current_id = task_id;
-
-            if (auto_save_status == false) auto_save();
-
-            ui->task_title->setCursorPosition(0);
-            ui->task_view_frame->show();
+                ui->task_title->setCursorPosition(0);
+                ui->task_view_frame->show();
+            }
         }
     }
-
 }
 
-void MainWindow::auto_save() {
+void MainWindow::setup_auto_save() {
+    connect(ui->task_title, &QLineEdit::textChanged, this, &MainWindow::save_task_title);
+    connect(ui->task_edit, &QTextEdit::textChanged, this, &MainWindow::save_task_text);
+}
 
-    connect(ui->task_title, &QLineEdit::textChanged, [this]() {
+void MainWindow::save_task_title() {
+    if (m_task_current_id == 0) return;
+    save_task_data("title", ui->task_title->text());
+}
 
-        if (m_task_current_id == 0) {
-            return;
-        }
+void MainWindow::save_task_text() {
+    if (m_task_current_id == 0) return;
+    save_task_data("text", ui->task_edit->toPlainText());
+}
 
-        QDateTime data_time = QDateTime::currentDateTime();
-        int timestamp = data_time.toSecsSinceEpoch();
+void MainWindow::save_task_data(const QString& column, const QString& value) {
+    QDateTime data_time = QDateTime::currentDateTime();
+    int timestamp = data_time.toSecsSinceEpoch();
 
-        // Auto save QTextEdit
-        QSqlQuery db_query;
+    QSqlQuery db_query;
+    QString queryStr = QString("UPDATE task_list SET %1 = :value, update_time = :update_time WHERE id = :id").arg(column);
+    db_query.prepare(queryStr);
+    db_query.bindValue(":id", m_task_current_id);
+    db_query.bindValue(":value", value);
+    db_query.bindValue(":update_time", timestamp);
 
-        db_query.prepare("UPDATE task_list SET title = :title, update_time = :update_time WHERE id = :id");
-        db_query.bindValue(":id", m_task_current_id);
-        db_query.bindValue(":title", ui->task_title->text());
-        db_query.bindValue(":update_time", timestamp);
+    if (db_query.exec()) {
+        update_task_ui_after_save(timestamp);
+    } else {
+        qWarning() << "An error occurred when executing the query related to autosave task" << column << "!";
+    }
+}
 
-        if (!db_query.exec())
-        {
-            qInfo() << "An error occurred when executing the query related to autosave task title!";
-        } else {
-            window_update();
+void MainWindow::update_task_ui_after_save(int timestamp) {
+    window_update();
 
-            QDateTime t_update_time;
-            t_update_time.setSecsSinceEpoch(timestamp);
-            QString format_update_time = t_update_time.toString("dd/MM/yyyy hh:mm");
-            ui->updated_data->setText(format_update_time);
+    QDateTime t_update_time;
+    t_update_time.setSecsSinceEpoch(timestamp);
+    QString format_update_time = t_update_time.toString("dd/MM/yyyy hh:mm");
 
-            ui->updated_text->show();
-            ui->updated_data->show();
-        }
-
-    });
-
-    connect(ui->task_edit, &QTextEdit::textChanged, [this]() {
-
-        if (m_task_current_id == 0) {
-            return;
-        }
-
-        QDateTime data_time = QDateTime::currentDateTime();
-        int timestamp = data_time.toSecsSinceEpoch();
-
-        // Auto save QTextEdit
-        QSqlQuery db_query;
-
-        db_query.prepare("UPDATE task_list SET text = :text, update_time = :update_time WHERE id = :id");
-        db_query.bindValue(":id", m_task_current_id);
-        db_query.bindValue(":text", ui->task_edit->toPlainText());
-        db_query.bindValue(":update_time", timestamp);
-
-        if (!db_query.exec())
-        {
-            qInfo() << "An error occurred when executing the query related to autosave task text!";
-        } else {
-            QDateTime t_update_time;
-            t_update_time.setSecsSinceEpoch(timestamp);
-            QString format_update_time = t_update_time.toString("dd/MM/yyyy hh:mm");
-            ui->updated_data->setText(format_update_time);
-
-            ui->updated_text->show();
-            ui->updated_data->show();
-        }
-
-    });
-
-    auto_save_status = true;
-
+    ui->updated_data->setText(format_update_time);
+    ui->updated_text->show();
+    ui->updated_data->show();
 }
 
 QVector<QMap<QString, QVariant>> MainWindow::get_task_data_by_id(unsigned int task_id) {

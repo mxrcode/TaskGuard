@@ -5,7 +5,7 @@ TaskGuard is a to-do list application that helps you manage your tasks in a simp
 
 ![image](https://user-images.githubusercontent.com/123785508/234422735-0a73b366-f11b-410c-828f-7b2de99d8683.png)
 
-****To encrypt the database, we use the [QtCipherSqlitePlugin(v1.3, LGPL-2.1)](https://github.com/devbean/QtCipherSqlitePlugin).***
+**To encrypt the database, we use the [QtCipherSqlitePlugin](https://github.com/mxrcode/QtCipherSqlitePlugin).*
   
 ## Features
 - **Task management**: Create, edit, and delete tasks with ease.
