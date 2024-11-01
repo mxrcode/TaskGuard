@@ -6,7 +6,7 @@ void message_handler(QtMsgType type, const QMessageLogContext &context, const QS
     QFile log_file("qInfo.log");
     if (log_file.open(QIODevice::WriteOnly | QIODevice::Append)) {
         QTextStream stream(&log_file);
-        QString t_msg = QDateTime::currentDateTime().toString() + " : " + msg;
+        QString t_msg = "[" + QDateTime::currentDateTime().toString() + "] : " + msg;
         stream << t_msg << Qt::endl;
     }
 }
