@@ -106,7 +106,11 @@ public:
     void on_group_item_clicked(QListWidgetItem *item);
     void on_task_item_clicked(QListWidgetItem *item);
 
-    void auto_save();
+    void setup_auto_save();
+    void save_task_title();
+    void save_task_text();
+    void save_task_data(const QString& column, const QString& value);
+    void update_task_ui_after_save(int timestamp);
 
     void groups_update();
     void tasks_update();
