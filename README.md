@@ -43,8 +43,6 @@ If you have any questions, comments, or feedback, please feel free to contact th
 
 Thank you for using TaskGuard! We hope it helps you stay organized and secure.
 
-**Important Note: TaskGuard is a Working Title**
-
 Please note that "TaskGuard" & "Retask" is currently a working title for the to-do list application. As the project evolves, the name may change in the future. Therefore, it's recommended to subscribe to updates or follow the GitHub repository to stay informed about any important changes, including potential updates to the project name.
 
 We appreciate your interest and support, and we are committed to continuously improving and enhancing the application. Thank you for your understanding, and we look forward to bringing you the best possible task management solution!
