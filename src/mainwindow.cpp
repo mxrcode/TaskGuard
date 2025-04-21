@@ -32,6 +32,8 @@ bool MainWindow::setup_MainWindow(bool password_state, QString password, bool hw
     encryption_window = new encryption(this);
     settings_window = new SettingsWindow(this);
 
+    plugin_keyghost_window = new PluginKeyGhost(this);
+
     update_checker = new UpdateChecker(this);
     update_checker->check();
 
@@ -1519,6 +1521,11 @@ void MainWindow::on_encryption_button_clicked()
 void MainWindow::on_settings_button_clicked()
 {
     settings_window->open_widget();
+}
+
+void MainWindow::on_plugin_keyghost_button_clicked()
+{
+    plugin_keyghost_window->open_widget();
 }
 
 void MainWindow::keyPressEvent(QKeyEvent *event) {

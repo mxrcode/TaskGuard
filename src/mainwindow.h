@@ -59,6 +59,7 @@
 #include "encryption.h"
 #include "settingswindow.h"
 #include "updatechecker.h"
+#include "plugin_keyghost.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -154,6 +155,8 @@ public:
 
     UpdateChecker *update_checker;
 
+    PluginKeyGhost *plugin_keyghost_window;
+
 public slots:
     void handle_notification_clicked();
 
@@ -174,6 +177,8 @@ private slots:
     void on_encryption_button_clicked();
 
     void on_settings_button_clicked();
+
+    void on_plugin_keyghost_button_clicked();
 
 private:
     Ui::MainWindow *ui;

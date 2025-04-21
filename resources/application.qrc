@@ -12,5 +12,6 @@
         <file>../img/eye-white.svg</file>
         <file>../img/encrypt.svg</file>
         <file>../img/settings.svg</file>
+        <file>../img/plugin-keyghost.svg</file>
     </qresource>
 </RCC>

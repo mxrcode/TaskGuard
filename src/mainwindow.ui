@@ -190,6 +190,66 @@ background: #636872;
           <number>0</number>
          </property>
          <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_4">
+           <item>
+            <widget class="QPushButton" name="plugin_keyghost_button">
+             <property name="minimumSize">
+              <size>
+               <width>34</width>
+               <height>34</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>34</width>
+               <height>34</height>
+              </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QPushButton {
+border-radius: 16px;
+}
+QPushButton::hover {
+background: #181D27;
+}
+QPushButton::pressed {
+background: #636872;
+}</string>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="icon">
+              <iconset resource="../resources/application.qrc">
+               <normaloff>:/img/plugin-keyghost.svg</normaloff>:/img/plugin-keyghost.svg</iconset>
+             </property>
+             <property name="iconSize">
+              <size>
+               <width>22</width>
+               <height>22</height>
+              </size>
+             </property>
+             <property name="flat">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <spacer name="horizontalSpacer_8">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+          </layout>
+         </item>
+         <item>
           <layout class="QHBoxLayout" name="horizontalLayout_2">
            <item>
             <widget class="QPushButton" name="encryption_button">
