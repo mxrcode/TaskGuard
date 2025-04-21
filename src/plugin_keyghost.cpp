@@ -16,6 +16,7 @@ PluginKeyGhost::PluginKeyGhost(QMainWindow *parent) :
     const QString software_label = SOFT_NAME + " " + SOFT_VERSION;
 
     setWindowTitle(tr("KeyGhost") + " | " + software_label);
+    setWindowModality(Qt::NonModal);
 }
 
 PluginKeyGhost::~PluginKeyGhost()
