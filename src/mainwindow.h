@@ -189,6 +189,10 @@ private:
     QVector<QAction*> context_action_task_list;
     QVector<QAction*> context_action_group_list;
 
+    // CONTEXT MENU: task_edit
+    void show_context_menu_task_edit(const QPoint &pos);
+    void perform_custom_action_task_edit_open_in_keyghost();
+
     unsigned int m_group_current_id = 1;
     unsigned int m_task_current_id = 0;
 

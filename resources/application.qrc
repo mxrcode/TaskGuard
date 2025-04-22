@@ -13,5 +13,6 @@
         <file>../img/encrypt.svg</file>
         <file>../img/settings.svg</file>
         <file>../img/plugin-keyghost.svg</file>
+        <file>../img/plugin-keyghost-dark.svg</file>
     </qresource>
 </RCC>

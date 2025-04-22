@@ -394,6 +394,10 @@ bool MainWindow::setup_MainWindow(bool password_state, QString password, bool hw
     ui->task_title->setPlaceholderText(tr("Title..."));
     ui->task_edit->setPlaceholderText(tr("Description..."));
 
+    // Add custom context menu to the task edit
+    ui->task_edit->setContextMenuPolicy(Qt::CustomContextMenu);
+    connect(ui->task_edit, &QTextEdit::customContextMenuRequested, this, &MainWindow::show_context_menu_task_edit);
+
     show();
     isActiveWindow();
     raise();
@@ -412,6 +416,30 @@ long MainWindow::version_convert(QString version) {
 void MainWindow::handle_notification_clicked() {
     show();
     raise();
+}
+
+void MainWindow::show_context_menu_task_edit(const QPoint &pos) {
+    // Use the standard menu directly instead of creating our own
+    QMenu *menu = ui->task_edit->createStandardContextMenu();
+    
+    // Separator
+    menu->addSeparator();
+
+    // Add custom action - make menu its owner
+    QAction *customAction = new QAction("KeyGhost", menu);
+    customAction->setIcon(QIcon(":/img/plugin-keyghost-dark.svg"));
+    customAction->setEnabled(ui->task_edit->textCursor().hasSelection());
+    connect(customAction, &QAction::triggered, this, &MainWindow::perform_custom_action_task_edit_open_in_keyghost);
+    menu->addAction(customAction);
+
+    // Show the context menu
+    menu->exec(ui->task_edit->viewport()->mapToGlobal(pos));
+    delete menu; // Now safe to delete - deletes both the menu and all owned actions
+}
+
+void MainWindow::perform_custom_action_task_edit_open_in_keyghost() {
+    QString selectedText = ui->task_edit->textCursor().selectedText();
+    plugin_keyghost_window->open_widget(selectedText);
 }
 
 QDialog* MainWindow::create_selection_dialog(QString title, QMap<QString, int> map, QWidget* parent) {

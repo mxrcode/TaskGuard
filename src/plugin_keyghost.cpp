@@ -27,11 +27,18 @@ PluginKeyGhost::~PluginKeyGhost()
 void PluginKeyGhost::closeEvent(QCloseEvent *event)
 {
     event->ignore();
+    ui->text_typing_plain_text_edit->clear();
     hide();
 }
 
-void PluginKeyGhost::open_widget() {
+void PluginKeyGhost::open_widget(QString text) {
     if (this->isHidden()) {
+        if (!text.isEmpty()) {
+            ui->text_typing_plain_text_edit->clear();
+            ui->text_typing_plain_text_edit->setPlainText(text);
+            ui->text_typing_plain_text_edit->setFocus();
+        }
+
         this->show();
         this->activateWindow();
         this->raise();

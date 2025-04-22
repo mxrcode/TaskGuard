@@ -39,7 +39,7 @@ public:
     void sendKeystroke();
     void sendText(const QString &text);
 
-    void open_widget();
+    void open_widget(QString text = "");
 
 protected:
     void closeEvent(QCloseEvent *event) override;
