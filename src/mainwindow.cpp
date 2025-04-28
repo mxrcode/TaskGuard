@@ -545,8 +545,9 @@ void MainWindow::fill_group_list_widget(QListWidget* list_widget, QString table_
 
     db_query.exec();
 
-    list_widget->setItemDelegate(new TextIndentDelegate(text_indent, list_widget)); // Text indent
-
+    // list_widget->setItemDelegate(new TextIndentDelegate(text_indent, list_widget)); // Text indent
+    QString indent = QString(4, QChar(0x00A0));
+    
     QVector<QVector<QVariant>> db_items;
 
     while (db_query.next()) {
@@ -554,7 +555,7 @@ void MainWindow::fill_group_list_widget(QListWidget* list_widget, QString table_
     }
 
     for (int i = 0; i < db_items.size(); i++) {
-        QListWidgetItem *item = new QListWidgetItem(db_items[i].at(1).toString());
+        QListWidgetItem *item = new QListWidgetItem(indent + db_items[i].at(1).toString());
         item->setData(Qt::UserRole, db_items[i].at(0).toUInt());
         list_widget->addItem(item);
     }
@@ -581,6 +582,7 @@ void MainWindow::fill_task_list_widget(QListWidget* list_widget, QString table_n
     db_query.exec();
 
     // list_widget->setItemDelegate(new TextIndentDelegate(text_indent, list_widget)); // Text indent
+    QString indent = QString(2, QChar(0x00A0));
 
     QVector<QMap<QString, QVariant>> item_map;
 
@@ -613,8 +615,10 @@ void MainWindow::fill_task_list_widget(QListWidget* list_widget, QString table_n
             item_title.prepend(format_create_time);
         }
 
-        QListWidgetItem *item = new QListWidgetItem(item_title);
+        QListWidgetItem *item = new QListWidgetItem(indent + item_title);
         item->setData(Qt::UserRole, item_map[i].value("id").toUInt());
+
+        item->setForeground(Qt::black);
 
         if (item_map[i].value("task_status").toString() == "active") {
 
@@ -646,7 +650,7 @@ void MainWindow::fill_task_list_widget(QListWidget* list_widget, QString table_n
             item_title.prepend(format_create_time);
         }
 
-        QListWidgetItem *item = new QListWidgetItem(item_title);
+        QListWidgetItem *item = new QListWidgetItem(indent + item_title);
         item->setData(Qt::UserRole, item_map[i].value("id").toUInt());
 
         item->setForeground(Qt::gray);
@@ -1218,9 +1222,11 @@ void MainWindow::on_add_alarm_clicked()
     QTime current_alarm_time_qtime = current_alarm_time_datetime.time();
 
     QDialog dialog(this);
+    dialog.resize(340, 360); // Set initial dialog size
+
     dialog.setWindowTitle(tr("Select date and time for alarm"));
     dialog.setWindowFlag(Qt::WindowStaysOnTopHint);
-    dialog.setStyleSheet("QDialog {background-color:#FFF;}");
+    // dialog.setStyleSheet("QDialog {background-color:#FFF;}");
 
     QVBoxLayout layout(&dialog);
 
@@ -1229,6 +1235,8 @@ void MainWindow::on_add_alarm_clicked()
     calendar->setGridVisible(true);
     calendar->setVerticalHeaderFormat(QCalendarWidget::NoVerticalHeader);
     layout.addWidget(calendar);
+    
+    layout.addSpacing(6); // Added 6 pixels of vertical spacing
 
     QDateTimeEdit *time_edit = new QDateTimeEdit(QTime::currentTime());
     time_edit->setDisplayFormat("hh:mm");

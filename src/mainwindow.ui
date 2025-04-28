@@ -14,7 +14,16 @@
    <string>Retask</string>
   </property>
   <property name="styleSheet">
-   <string notr="true"/>
+   <string notr="true">QSplitter::handle {
+	background-color: #F4F5F6;
+	width: 3px;
+}
+QSplitter::handle:hover {
+	background-color: #F4F5F6;
+}
+QSplitter::handle:pressed {
+	background-color: #F4F5F6;
+}</string>
   </property>
   <property name="locale">
    <locale language="English" country="UnitedStates"/>
@@ -48,10 +57,10 @@
        <string notr="true">QFrame {background-color: #313640;color:#FFF;}</string>
       </property>
       <property name="frameShape">
-       <enum>QFrame::StyledPanel</enum>
+       <enum>QFrame::Shape::StyledPanel</enum>
       </property>
       <property name="frameShadow">
-       <enum>QFrame::Raised</enum>
+       <enum>QFrame::Shadow::Raised</enum>
       </property>
       <property name="lineWidth">
        <number>0</number>
@@ -166,15 +175,44 @@ background: #636872;
           </font>
          </property>
          <property name="styleSheet">
-          <string notr="true">QListWidget::item {
-	padding: 3px;
+          <string notr="true">#group_list {
+    color: white;
+	outline: none;
+}
+
+#group_list::item {
+    color: white;
+    padding: 4px;
+
+    padding-left: 0px;
+ }
+
+#group_list::item:selected {
+	background-color: #2a2e36;
+
+    padding-left: 0px;
+}
+#group_list::item:hover {
+	background-color: #274665;
+
+    padding-left: 0px;
+}
+#group_list::item:selected:active {
+    background-color: #27466;
+
+    padding-left: 0px;
+}
+#group_list::item:selected:!active {
+    background-color: #2a2e36;
+
+    padding-left: 0px;
 }</string>
          </property>
          <property name="frameShape">
-          <enum>QFrame::NoFrame</enum>
+          <enum>QFrame::Shape::NoFrame</enum>
          </property>
          <property name="frameShadow">
-          <enum>QFrame::Plain</enum>
+          <enum>QFrame::Shadow::Plain</enum>
          </property>
          <property name="lineWidth">
           <number>1</number>
@@ -237,7 +275,7 @@ background: #636872;
            <item>
             <spacer name="horizontalSpacer_8">
              <property name="orientation">
-              <enum>Qt::Horizontal</enum>
+              <enum>Qt::Orientation::Horizontal</enum>
              </property>
              <property name="sizeHint" stdset="0">
               <size>
@@ -297,7 +335,7 @@ background: #636872;
            <item>
             <spacer name="horizontalSpacer_6">
              <property name="orientation">
-              <enum>Qt::Horizontal</enum>
+              <enum>Qt::Orientation::Horizontal</enum>
              </property>
              <property name="sizeHint" stdset="0">
               <size>
@@ -354,7 +392,7 @@ background: #636872;
            <item>
             <spacer name="horizontalSpacer_7">
              <property name="orientation">
-              <enum>Qt::Horizontal</enum>
+              <enum>Qt::Orientation::Horizontal</enum>
              </property>
              <property name="sizeHint" stdset="0">
               <size>
@@ -377,10 +415,10 @@ background: #636872;
        <string notr="true">QFrame {background:#F4F5F6;}</string>
       </property>
       <property name="frameShape">
-       <enum>QFrame::StyledPanel</enum>
+       <enum>QFrame::Shape::StyledPanel</enum>
       </property>
       <property name="frameShadow">
-       <enum>QFrame::Raised</enum>
+       <enum>QFrame::Shadow::Raised</enum>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_2">
        <property name="leftMargin">
@@ -406,7 +444,8 @@ background: #636872;
             </font>
            </property>
            <property name="styleSheet">
-            <string notr="true">margin: 3px 3px 3px 12px;</string>
+            <string notr="true">margin: 3px 3px 3px 12px;
+color: black;</string>
            </property>
            <property name="text">
             <string>Task List</string>
@@ -431,8 +470,10 @@ background: #636872;
            </property>
            <property name="styleSheet">
             <string notr="true">QLineEdit {
-	border: 1px solid #F4F5F6;
 	padding-left: 6px;
+    background: white;
+    color: black;
+    border-radius: 3px;
 }</string>
            </property>
           </widget>
@@ -545,15 +586,62 @@ background: #DBDCDD;
           </font>
          </property>
          <property name="styleSheet">
-          <string notr="true">QListWidget::item {
-	padding:  3px;
+          <string notr="true">#task_list {
+	outline: none;
+}
+
+/* ITEM */
+#task_list::item {
+	padding: 3px;
+ }
+
+#task_list::item:focus {
+    outline: none;
+	color: black;
+}
+#task_list::item:selected:focus {
+    outline: none;
+	color: black;
+}
+
+#task_list::item:selected {
+	background-color: #c4e0f8;
+	color: black;
+}
+#task_list::item:selected:active {
+    background-color: #c4e0f8;
+	color: black;
+}
+#task_list::item:selected:!active {
+    background-color: #d0d0d1;
+	color: black;
+}
+#task_list::item:hover {
+	background-color: #dbeaf7;
+	color: black;
+}
+
+/* CHECKBOX */
+#task_list::indicator {
+	width: 14px;
+	height: 14px;
+    position: absolute;
+    left: 6px; 
+}
+#task_list::indicator:unchecked {
+	border: 1px solid #333333;
+	background-color: #ffffff;
+}
+#task_list::indicator:checked {
+	border: 1px solid #333333;
+	background-color: #2a2e36;
 }</string>
          </property>
          <property name="frameShape">
-          <enum>QFrame::NoFrame</enum>
+          <enum>QFrame::Shape::NoFrame</enum>
          </property>
          <property name="frameShadow">
-          <enum>QFrame::Plain</enum>
+          <enum>QFrame::Shadow::Plain</enum>
          </property>
          <property name="lineWidth">
           <number>1</number>
@@ -572,10 +660,10 @@ background: #DBDCDD;
        <string notr="true">QFrame {background:#FFF;}</string>
       </property>
       <property name="frameShape">
-       <enum>QFrame::StyledPanel</enum>
+       <enum>QFrame::Shape::StyledPanel</enum>
       </property>
       <property name="frameShadow">
-       <enum>QFrame::Raised</enum>
+       <enum>QFrame::Shadow::Raised</enum>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_3">
        <property name="spacing">
@@ -619,6 +707,8 @@ background: #DBDCDD;
             <string notr="true">QLineEdit {
 	border: none;
 	margin-left: 17px;
+    background: white;
+    color: black;
 }</string>
            </property>
            <property name="inputMask">
@@ -715,7 +805,7 @@ background: #DBDCDD;
 }</string>
          </property>
          <property name="orientation">
-          <enum>Qt::Horizontal</enum>
+          <enum>Qt::Orientation::Horizontal</enum>
          </property>
         </widget>
        </item>
@@ -730,13 +820,14 @@ background: #DBDCDD;
           <string notr="true">QTextEdit {
 	margin: 10px;
 	margin-left: 14px;
+    color: black;
 }</string>
          </property>
          <property name="frameShape">
-          <enum>QFrame::NoFrame</enum>
+          <enum>QFrame::Shape::NoFrame</enum>
          </property>
          <property name="frameShadow">
-          <enum>QFrame::Plain</enum>
+          <enum>QFrame::Shadow::Plain</enum>
          </property>
          <property name="lineWidth">
           <number>0</number>
@@ -774,7 +865,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
          <item row="1" column="0">
           <spacer name="horizontalSpacer_2">
            <property name="orientation">
-            <enum>Qt::Horizontal</enum>
+            <enum>Qt::Orientation::Horizontal</enum>
            </property>
            <property name="sizeHint" stdset="0">
             <size>
@@ -787,7 +878,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
          <item row="1" column="4">
           <spacer name="horizontalSpacer_4">
            <property name="orientation">
-            <enum>Qt::Horizontal</enum>
+            <enum>Qt::Orientation::Horizontal</enum>
            </property>
            <property name="sizeHint" stdset="0">
             <size>
@@ -800,7 +891,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
          <item row="3" column="0">
           <spacer name="horizontalSpacer_5">
            <property name="orientation">
-            <enum>Qt::Horizontal</enum>
+            <enum>Qt::Orientation::Horizontal</enum>
            </property>
            <property name="sizeHint" stdset="0">
             <size>
@@ -829,7 +920,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
          <item row="2" column="0">
           <spacer name="horizontalSpacer">
            <property name="orientation">
-            <enum>Qt::Horizontal</enum>
+            <enum>Qt::Orientation::Horizontal</enum>
            </property>
            <property name="sizeHint" stdset="0">
             <size>
@@ -868,7 +959,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
          <item row="2" column="4">
           <spacer name="horizontalSpacer_3">
            <property name="orientation">
-            <enum>Qt::Horizontal</enum>
+            <enum>Qt::Orientation::Horizontal</enum>
            </property>
            <property name="sizeHint" stdset="0">
             <size>
