@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.5)
 
-project(TaskGuard VERSION 1.3.4 LANGUAGES CXX)
+project(TaskGuard VERSION 1.3.5 LANGUAGES CXX)
 
 set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTOMOC ON)
@@ -35,6 +35,7 @@ set(PROJECT_SOURCES
         src/string_encryption.h src/string_encryption.cpp
         src/updatechecker.h src/updatechecker.cpp src/updatechecker.ui
         src/plugin_keyghost.h src/plugin_keyghost.cpp src/plugin_keyghost.ui
+        src/plugin_passgen.h src/plugin_passgen.cpp src/plugin_passgen.ui
         ${TS_FILES}
 )
 

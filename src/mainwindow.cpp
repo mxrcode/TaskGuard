@@ -33,6 +33,7 @@ bool MainWindow::setup_MainWindow(bool password_state, QString password, bool hw
     settings_window = new SettingsWindow(this);
 
     plugin_keyghost_window = new PluginKeyGhost(this);
+    plugin_passgen_window = new PluginPassGen(this);
 
     update_checker = new UpdateChecker(this);
     update_checker->check();
@@ -1562,6 +1563,11 @@ void MainWindow::on_settings_button_clicked()
 void MainWindow::on_plugin_keyghost_button_clicked()
 {
     plugin_keyghost_window->open_widget();
+}
+
+void MainWindow::on_plugin_passgen_button_clicked()
+{
+    plugin_passgen_window->open_widget();
 }
 
 void MainWindow::keyPressEvent(QKeyEvent *event) {

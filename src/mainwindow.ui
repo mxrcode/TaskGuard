@@ -35,7 +35,7 @@ QSplitter::handle:pressed {
      <height>0</height>
     </size>
    </property>
-   <layout class="QHBoxLayout" name="horizontalLayout" stretch="4,6,10">
+   <layout class="QHBoxLayout" name="horizontalLayout" stretch="4,6,0">
     <property name="spacing">
      <number>0</number>
     </property>
@@ -183,7 +183,6 @@ background: #636872;
 #group_list::item {
     color: white;
     padding: 4px;
-
     padding-left: 0px;
  }
 
@@ -223,10 +222,70 @@ background: #636872;
         </widget>
        </item>
        <item>
-        <layout class="QVBoxLayout" name="verticalLayout_4">
+        <layout class="QVBoxLayout" name="verticalLayout_5">
          <property name="spacing">
           <number>0</number>
          </property>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_5">
+           <item>
+            <widget class="QPushButton" name="plugin_passgen_button">
+             <property name="minimumSize">
+              <size>
+               <width>34</width>
+               <height>34</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>34</width>
+               <height>34</height>
+              </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QPushButton {
+border-radius: 16px;
+}
+QPushButton::hover {
+background: #181D27;
+}
+QPushButton::pressed {
+background: #636872;
+}</string>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="icon">
+              <iconset resource="../resources/application.qrc">
+               <normaloff>:/img/plugin-passgen.svg</normaloff>:/img/plugin-passgen.svg</iconset>
+             </property>
+             <property name="iconSize">
+              <size>
+               <width>22</width>
+               <height>22</height>
+              </size>
+             </property>
+             <property name="flat">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <spacer name="horizontalSpacer_9">
+             <property name="orientation">
+              <enum>Qt::Orientation::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+          </layout>
+         </item>
          <item>
           <layout class="QHBoxLayout" name="horizontalLayout_4">
            <item>
@@ -634,7 +693,7 @@ background: #DBDCDD;
 }
 #task_list::indicator:checked {
 	border: 1px solid #333333;
-	background-color: #2a2e36;
+	background-color: #cccccc;
 }</string>
          </property>
          <property name="frameShape">

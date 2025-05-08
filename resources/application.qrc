@@ -14,5 +14,7 @@
         <file>../img/settings.svg</file>
         <file>../img/plugin-keyghost.svg</file>
         <file>../img/plugin-keyghost-dark.svg</file>
+        <file>../img/plugin-passgen.svg</file>
+        <file>../img/plugin-passgen-dark.svg</file>
     </qresource>
 </RCC>

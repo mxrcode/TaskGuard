@@ -60,6 +60,7 @@
 #include "settingswindow.h"
 #include "updatechecker.h"
 #include "plugin_keyghost.h"
+#include "plugin_passgen.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -156,6 +157,7 @@ public:
     UpdateChecker *update_checker;
 
     PluginKeyGhost *plugin_keyghost_window;
+    PluginPassGen *plugin_passgen_window;
 
 public slots:
     void handle_notification_clicked();
@@ -179,6 +181,8 @@ private slots:
     void on_settings_button_clicked();
 
     void on_plugin_keyghost_button_clicked();
+
+    void on_plugin_passgen_button_clicked();
 
 private:
     Ui::MainWindow *ui;
